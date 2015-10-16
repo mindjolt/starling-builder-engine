@@ -1,0 +1,144 @@
+{
+  "layout": {
+    "customParams": {
+      "container": 1
+    },
+    "cls": "starling.display.Sprite",
+    "params": {
+      "name": null
+    },
+    "children": [
+      {
+        "customParams": {
+          "forEditor": true
+        },
+        "cls": "feathers.controls.List",
+        "params": {
+          "name": "obj1",
+          "width": 534,
+          "y": 166,
+          "height": 515,
+          "x": 53
+        }
+      },
+      {
+        "customParams": {},
+        "cls": "feathers.display.Scale9Image",
+        "constructorParams": [
+          {
+            "cls": "feathers.textures.Scale9Textures",
+            "textureName": "generic_box_white",
+            "scaleRatio": [
+              0.3,
+              0.3,
+              0.4,
+              0.4
+            ]
+          }
+        ],
+        "params": {
+          "name": "generic_box_white",
+          "width": 517,
+          "y": 172.5,
+          "height": 112,
+          "x": 62
+        }
+      },
+      {
+        "customParams": {},
+        "cls": "starling.display.Image",
+        "constructorParams": [
+          {
+            "cls": "starling.textures.Texture",
+            "textureName": "generic_gift"
+          }
+        ],
+        "params": {
+          "name": "generic_gift",
+          "width": 77,
+          "y": 186,
+          "height": 83,
+          "x": 493
+        }
+      },
+      {
+        "customParams": {},
+        "cls": "starling.display.Image",
+        "constructorParams": [
+          {
+            "cls": "starling.textures.Texture",
+            "textureName": "generic_app_icon"
+          }
+        ],
+        "params": {
+          "name": "generic_app_icon",
+          "width": 76,
+          "y": 186,
+          "height": 77,
+          "x": 132
+        }
+      },
+      {
+        "customParams": {},
+        "cls": "starling.text.TextField",
+        "constructorParams": [
+          {
+            "value": 200
+          },
+          {
+            "value": 100
+          },
+          {
+            "value": "Abc123"
+          },
+          {
+            "value": "GrilledCheeseBTN_Size36_ColorFFFFFF",
+            "name": "fontName"
+          },
+          {
+            "value": 46
+          },
+          {
+            "value": 16777215
+          }
+        ],
+        "params": {
+          "width": 267,
+          "y": 204.5,
+          "fontName": "GrilledCheeseBTN_Size36_ColorFFFFFF",
+          "text": "You received a gift!",
+          "autoScale": true,
+          "color": 12273920,
+          "name": "GrilledCheeseBTN_Size36_ColorFFFFFF",
+          "height": 46,
+          "fontSize": 37,
+          "x": 215
+        }
+      },
+      {
+        "customParams": {},
+        "cls": "starling.display.Image",
+        "constructorParams": [
+          {
+            "cls": "starling.textures.Texture",
+            "textureName": "generic_check_bg"
+          }
+        ],
+        "params": {
+          "name": "generic_check_bg",
+          "width": 45,
+          "y": 201.5,
+          "height": 46,
+          "x": 71
+        }
+      }
+    ]
+  },
+  "setting": {
+    "canvasSize": {
+      "y": 960,
+      "x": 640
+    }
+  },
+  "version": "1.0"
+}

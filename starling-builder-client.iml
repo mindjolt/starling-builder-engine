@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="Flex" version="4">
+  <component name="FlexBuildConfigurationManager" active="demo">
+    <configurations>
+      <configuration name="demo" target-platform="Mobile" pure-as="true" main-class="Main" output-file="starling-builder-client.swf" output-folder="$MODULE_DIR$/out/production/starling-builder-client">
+        <dependencies target-player="18.0">
+          <entries>
+            <entry library-id="c40f183f-b2f9-4997-ac10-585569d3cf5b">
+              <dependency linkage="Merged" />
+            </entry>
+          </entries>
+          <sdk name="AIRSDK" />
+        </dependencies>
+        <compiler-options />
+        <packaging-air-desktop />
+        <packaging-android enabled="true" use-generated-descriptor="false" custom-descriptor-path="$MODULE_DIR$/demo/src/Main-app.xml" package-file-name="starling-builder-client">
+          <files-to-package>
+            <FilePathAndPathInPackage file-path="$MODULE_DIR$/demo/assets/textures" path-in-package="textures" />
+          </files-to-package>
+        </packaging-android>
+        <packaging-ios enabled="true" use-generated-descriptor="false" custom-descriptor-path="$MODULE_DIR$/demo/src/Main-app.xml" package-file-name="starling-builder-client">
+          <files-to-package>
+            <FilePathAndPathInPackage file-path="$MODULE_DIR$/demo/assets/textures" path-in-package="textures" />
+          </files-to-package>
+        </packaging-ios>
+      </configuration>
+      <configuration name="demo_web" pure-as="true" main-class="Main" output-file="demo_web.swf" output-folder="$MODULE_DIR$/out/production/starling-builder-client" use-html-wrapper="true" wrapper-template-path="$MODULE_DIR$/demo/html-template">
+        <dependencies target-player="18.0">
+          <entries>
+            <entry library-id="bed85d3a-f7ef-4a3d-bdf7-3cf336ed5b53">
+              <dependency linkage="Merged" />
+            </entry>
+          </entries>
+          <sdk name="AIRSDK" />
+        </dependencies>
+        <compiler-options />
+        <packaging-air-desktop />
+        <packaging-android />
+        <packaging-ios />
+      </configuration>
+    </configurations>
+    <compiler-options />
+  </component>
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/demo/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/demo/assets" isTestSource="false" />
+    </content>
+    <orderEntry type="jdk" jdkName="AIRSDK" jdkType="Flex SDK Type (new)" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library" exported="">
+      <library type="flex">
+        <properties id="c40f183f-b2f9-4997-ac10-585569d3cf5b" />
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/demo/libs" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+        <jarDirectory url="file://$MODULE_DIR$/demo/libs" recursive="false" />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library type="flex">
+        <properties id="bed85d3a-f7ef-4a3d-bdf7-3cf336ed5b53" />
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/demo/libs" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+        <jarDirectory url="file://$MODULE_DIR$/demo/libs" recursive="false" />
+      </library>
+    </orderEntry>
+  </component>
+</module>
+

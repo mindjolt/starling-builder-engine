@@ -1,0 +1,137 @@
+/**
+ *  Starling Builder
+ *  Copyright 2015 SGN Inc. All Rights Reserved.
+ *
+ *  This program is free software. You can redistribute and/or modify it in
+ *  accordance with the terms of the accompanying license agreement.
+ */
+package com.sgn.starlingbuilder.engine.util
+{
+    import com.sgn.starlingbuilder.engine.UIBuilder;
+
+    import flash.utils.getDefinitionByName;
+    import flash.utils.getQualifiedClassName;
+
+    public class ParamUtil
+    {
+        public function ParamUtil()
+        {
+        }
+
+        public static function getParams(template:Object, obj:Object):Array
+        {
+            var className:String = getClassName(obj);
+            return getParamByClassName(template, className);
+        }
+
+        public static function getParamByClassName(template:Object, className:String):Array
+        {
+            var params:Array = template.default_component.params.concat();
+
+            for each (var item:Object in template.supported_components)
+            {
+                if (item.cls == className)
+                {
+                    for each (var param:Object in item.params)
+                    {
+                        params.push(param);
+                    }
+
+                    break;
+                }
+            }
+
+            return params;
+
+        }
+
+        public static function getClassName(obj:Object):String
+        {
+            if (obj == null) return "";
+
+            return getQualifiedClassName(obj).replace("::", ".");
+        }
+
+        public static function getClassNames(objects:Array):Array
+        {
+            var res:Array = [];
+            for each (var obj:Object in objects)
+            {
+                res.push(getClassName(obj));
+            }
+            return res;
+        }
+
+        public static function getCustomParams(template:Object):Array
+        {
+            return template.default_component.customParams as Array;
+        }
+
+
+
+
+
+        public static function getConstructorParams(template:Object, cls:String):Array
+        {
+            for each (var item:Object in template.supported_components)
+            {
+                if (item.cls == cls)
+                {
+                    return UIBuilder.cloneObject(item.constructorParams) as Array;
+                }
+            }
+
+            return null;
+        }
+
+        public static function getCreateComponentClass(template:Object, cls:String):Class
+        {
+            for each (var item:Object in template.supported_components)
+            {
+                if (item.cls == cls && item.createComponentClass)
+                {
+                    return getDefinitionByName(item.createComponentClass) as Class;
+                }
+            }
+
+            return null;
+        }
+
+        public static function hasFlag(template:Object, cls:String, flag:String)
+        {
+            for each (var item:Object in template.supported_components)
+            {
+                if (item.cls == cls)
+                {
+                    if (item.hasOwnProperty(flag))
+                        return true;
+                    else
+                        return false;
+                }
+            }
+
+            return false;
+
+        }
+
+        public static function createButton(template:Object, cls:String):Boolean
+        {
+            return hasFlag(template, cls, "createButton");
+        }
+
+        public static function scale3Data(template:Object, cls:String):Boolean
+        {
+            return hasFlag(template, cls, "scale3Data");
+        }
+
+        public static function scale9Data(template:Object, cls:String):Boolean
+        {
+            return hasFlag(template, cls, "scale9Data");
+        }
+
+        public static function isContainer(template:Object, cls:String):Boolean
+        {
+            return hasFlag(template, cls, "container");
+        }
+    }
+}
