@@ -28,6 +28,11 @@ package com.sgn.starlingbuilder.engine.util
         {
             var params:Array = template.default_component.params.concat();
 
+            if (getFlag(template, className, "tag") == "feathers")
+            {
+                params = params.concat(template.default_feathers_component.params);
+            }
+
             for each (var item:Object in template.supported_components)
             {
                 if (item.cls == className)
@@ -112,6 +117,22 @@ package com.sgn.starlingbuilder.engine.util
 
             return false;
 
+        }
+
+        public static function getFlag(template:Object, cls:String, flag:String):String
+        {
+            for each (var item:Object in template.supported_components)
+            {
+                if (item.cls == cls)
+                {
+                    if (item.hasOwnProperty(flag))
+                        return item[flag];
+                    else
+                        return null;
+                }
+            }
+
+            return null;
         }
 
         public static function createButton(template:Object, cls:String):Boolean
