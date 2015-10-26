@@ -135,6 +135,12 @@ package com.sgn.starlingbuilder.engine.util
             return null;
         }
 
+        public static function getDisplayObjectName(cls:String):String
+        {
+            var index:int = cls.lastIndexOf(".") + 1;
+            return cls.substr(index, 1).toLocaleLowerCase() + cls.substr(index + 1);
+        }
+
         public static function createButton(template:Object, cls:String):Boolean
         {
             return hasFlag(template, cls, "createButton");
