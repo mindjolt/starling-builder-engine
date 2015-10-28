@@ -71,12 +71,13 @@ package com.sgn.starlingbuilder.engine
             paramsDict[obj] = data;
 
             var container:DisplayObjectContainer = obj as DisplayObjectContainer;
+			var item:Object;
 
             if (container)
             {
                 if (data.children)
                 {
-                    for each (var item:Object in data.children)
+                    for each (item in data.children)
                     {
                         if (!_forEditor && item.customParams && item.customParams.forEditor)
                             continue;
@@ -87,10 +88,19 @@ package com.sgn.starlingbuilder.engine
 
                 if (isExternalSource(data))
                 {
-                    var externalData:Object = _dataFormatter.read(_assetMediator.getExternalData(data.customParams.source));
+                    var externalData:Object = _dataFormatter.read(_assetMediator.getExternalData(data.customParams.source)).layout;
                     var params:Dictionary = new Dictionary();
-                    container.addChild(loadTree(externalData.layout, factory, params));
-                    paramsDict[obj] = data;
+
+					 if (externalData.children)
+					{
+						for each (item in externalData.children)
+						{
+							if (!_forEditor && item.customParams && item.customParams.forEditor)
+								continue;
+
+							container.addChild(loadTree(item, factory, paramsDict));
+						}
+					}
                 }
             }
 
@@ -247,10 +257,13 @@ package com.sgn.starlingbuilder.engine
         {
             var minX:Number = int.MAX_VALUE;
             var minY:Number = int.MAX_VALUE;
-
-            for (var i:int = 0; i < container.numChildren; ++i)
+			
+			var i:int;
+			var obj:DisplayObject
+			
+            for (i = 0; i < container.numChildren; ++i)
             {
-                var obj:DisplayObject = container.getChildAt(i);
+                obj = container.getChildAt(i);
 
                 var rect:Rectangle = obj.getBounds(container);
 
@@ -265,9 +278,9 @@ package com.sgn.starlingbuilder.engine
                 }
             }
 
-            for (var i:int = 0; i < container.numChildren; ++i)
+            for (i = 0; i < container.numChildren; ++i)
             {
-                var obj:DisplayObject = container.getChildAt(i);
+				obj = container.getChildAt(i);
                 obj.x -= minX;
                 obj.y -= minY;
             }
