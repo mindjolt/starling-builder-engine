@@ -264,9 +264,12 @@ package com.sgn.starlingbuilder.engine
             var minX:Number = int.MAX_VALUE;
             var minY:Number = int.MAX_VALUE;
 
-            for (var i:int = 0; i < container.numChildren; ++i)
+            var i:int;
+            var obj:DisplayObject;
+
+            for (i = 0; i < container.numChildren; ++i)
             {
-                var obj:DisplayObject = container.getChildAt(i);
+                obj = container.getChildAt(i);
 
                 var rect:Rectangle = obj.getBounds(container);
 
@@ -281,9 +284,9 @@ package com.sgn.starlingbuilder.engine
                 }
             }
 
-            for (var i:int = 0; i < container.numChildren; ++i)
+            for (i = 0; i < container.numChildren; ++i)
             {
-                var obj:DisplayObject = container.getChildAt(i);
+                obj = container.getChildAt(i);
                 obj.x -= minX;
                 obj.y -= minY;
             }

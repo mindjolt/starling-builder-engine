@@ -35,13 +35,14 @@ package com.sgn.starlingbuilder.engine
         protected function setDirectParams(obj:Object, data:Object):void
         {
             var array:Array = [];
-            for (var id:String in data.params)
+            var id:String;
+            for (id in data.params)
             {
                 array.push(id);
             }
             sortParams(array, PARAMS);
 
-            for each (var id:String in array)
+            for each (id in array)
             {
                 var item:Object = data.params[id];
 

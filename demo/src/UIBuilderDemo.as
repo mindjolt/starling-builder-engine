@@ -46,7 +46,7 @@ package {
             _assetManager = new AssetManager();
             _assetManager.enqueue(EmbeddedAssets);
             //_assetManager.enqueue(File.applicationDirectory.resolvePath("textures"));
-            _assetManager.loadQueue(function(ratio:Number){
+            _assetManager.loadQueue(function(ratio:Number):void{
                 if (ratio == 1)
                 {
                     createButtons();

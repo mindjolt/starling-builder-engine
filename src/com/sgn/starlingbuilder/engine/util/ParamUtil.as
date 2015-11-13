@@ -102,7 +102,7 @@ package com.sgn.starlingbuilder.engine.util
             return null;
         }
 
-        public static function hasFlag(template:Object, cls:String, flag:String)
+        public static function hasFlag(template:Object, cls:String, flag:String):Boolean
         {
             for each (var item:Object in template.supported_components)
             {
