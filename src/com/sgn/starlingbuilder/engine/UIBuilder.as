@@ -205,7 +205,7 @@ package com.sgn.starlingbuilder.engine
                     else
                     {
                         if (willSaveProperty(obj, param))
-                            item.params[param.name] = obj[param.name];
+                            saveProperty(item.params, obj, param.name);
                     }
                 }
             }
@@ -219,6 +219,22 @@ package com.sgn.starlingbuilder.engine
             }
 
             return item;
+        }
+
+        private function saveProperty(target:Object, source:Object, name:String):void
+        {
+            var data:Object = source[name];
+            if (data is Number)
+            {
+                data = roundToDigit(data as Number);
+            }
+            target[name] = data;
+        }
+
+        private function roundToDigit(value:Number, digit:int = 2):Number
+        {
+            var a:Number = Math.pow(10, digit);
+            return Math.round(value * a) / a;
         }
 
         private static function removeDefault(obj:Object, params:Array):void
