@@ -256,6 +256,11 @@ package com.sgn.starlingbuilder.engine
                 return false;
             }
 
+            if (param.read_only)
+            {
+                return false;
+            }
+
             return param.default_value == undefined || param.default_value != obj[param.name];
         }
 
