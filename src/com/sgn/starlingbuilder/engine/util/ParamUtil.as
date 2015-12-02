@@ -54,7 +54,7 @@ package com.sgn.starlingbuilder.engine.util
         {
             if (obj == null) return "";
 
-            return getQualifiedClassName(obj).replace("::", ".");
+            return getQualifiedClassName(obj).replace(/::/g, ".");
         }
 
         public static function getClassNames(objects:Array):Array

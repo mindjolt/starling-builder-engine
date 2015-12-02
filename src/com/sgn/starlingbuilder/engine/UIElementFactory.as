@@ -107,6 +107,10 @@ package com.sgn.starlingbuilder.engine
                 var s9t:Scale9Textures = new Scale9Textures(texture, rect);
                 return s9t;
             }
+            else if (param.cls == ParamUtil.getClassName(Vector.<Texture>))
+            {
+                return _assetMediator.getTextures(param.value);
+            }
             else
             {
                 return null;
@@ -192,13 +196,13 @@ package com.sgn.starlingbuilder.engine
 
             for each (var param:Object in params)
             {
-                if (param.hasOwnProperty("value"))
+                if (param.hasOwnProperty("cls"))
                 {
-                    args.push(param.value);
+                    args.push(create(param));
                 }
                 else
                 {
-                    args.push(create(param));
+                    args.push(param.value);
                 }
             }
 
