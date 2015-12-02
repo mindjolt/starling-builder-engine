@@ -93,6 +93,11 @@ package {
             return _assetManager.getTexture(name);
         }
 
+        public function getTextures(prefix:String="", result:Vector.<Texture>=null):Vector.<Texture>
+        {
+            return _assetManager.getTextures(prefix, result);
+        }
+
         public function getExternalData(name:String):Object
         {
             return null;
