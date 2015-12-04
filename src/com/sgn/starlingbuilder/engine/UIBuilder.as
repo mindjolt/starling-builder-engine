@@ -13,6 +13,7 @@ package com.sgn.starlingbuilder.engine
     import com.sgn.starlingbuilder.engine.localization.ILocalization;
     import com.sgn.starlingbuilder.engine.util.ObjectLocaterUtil;
     import com.sgn.starlingbuilder.engine.util.ParamUtil;
+    import com.sgn.starlingbuilder.engine.util.SaveUtil;
 
     import flash.geom.Rectangle;
     import flash.utils.ByteArray;
@@ -186,6 +187,13 @@ package com.sgn.starlingbuilder.engine
 
             item.cls = ParamUtil.getClassName(obj);
 
+            if (paramsData)
+            {
+                item.constructorParams = cloneObject(paramsData.constructorParams);
+                item.customParams = cloneObject(paramsData.customParams);
+                removeDefault(item, ParamUtil.getCustomParams(_template));
+            }
+
             for each (var param:Object in params)
             {
                 if (obj.hasOwnProperty(param.name))
@@ -204,18 +212,10 @@ package com.sgn.starlingbuilder.engine
                     }
                     else
                     {
-                        if (willSaveProperty(obj, param))
+                        if (willSaveProperty(obj, param, item))
                             saveProperty(item.params, obj, param.name);
                     }
                 }
-            }
-
-            if (paramsData)
-            {
-                item.constructorParams = cloneObject(paramsData.constructorParams);
-                item.customParams = cloneObject(paramsData.customParams);
-
-                removeDefault(item, ParamUtil.getCustomParams(_template));
             }
 
             return item;
@@ -248,7 +248,7 @@ package com.sgn.starlingbuilder.engine
             }
         }
 
-        private static function willSaveProperty(obj:Object, param:Object):Boolean
+        private static function willSaveProperty(obj:Object, param:Object, item:Object):Boolean
         {
             //Won't save default NaN value, plus it's not supported in json format
             if (param.default_value == "NaN" && isNaN(obj[param.name]))
@@ -257,6 +257,12 @@ package com.sgn.starlingbuilder.engine
             }
 
             if (param.read_only)
+            {
+                return false;
+            }
+
+            //Custom save rules go to here
+            if (!SaveUtil.willSave(obj, param, item))
             {
                 return false;
             }
