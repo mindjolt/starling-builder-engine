@@ -6,9 +6,9 @@
  *  accordance with the terms of the accompanying license agreement.
  */
 package {
-    import com.sgn.starlingbuilder.engine.IAssetMediator;
-    import com.sgn.starlingbuilder.engine.IUIBuilder;
-    import com.sgn.starlingbuilder.engine.UIBuilder;
+    import starlingbuilder.engine.IAssetMediator;
+    import starlingbuilder.engine.IUIBuilder;
+    import starlingbuilder.engine.UIBuilder;
 
     import feathers.controls.ButtonGroup;
     import feathers.core.PopUpManager;

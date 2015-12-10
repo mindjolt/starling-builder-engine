@@ -30,7 +30,7 @@
  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package com.sgn.starlingbuilder.engine.format
+package starlingbuilder.engine.format
 {
 
     import flash.utils.describeType;

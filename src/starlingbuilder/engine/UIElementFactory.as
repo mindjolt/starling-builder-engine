@@ -5,9 +5,9 @@
  *  This program is free software. You can redistribute and/or modify it in
  *  accordance with the terms of the accompanying license agreement.
  */
-package com.sgn.starlingbuilder.engine
+package starlingbuilder.engine
 {
-    import com.sgn.starlingbuilder.engine.util.ParamUtil;
+    import starlingbuilder.engine.util.ParamUtil;
 
     import feathers.textures.Scale3Textures;
     import feathers.textures.Scale9Textures;

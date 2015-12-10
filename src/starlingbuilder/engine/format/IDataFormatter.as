@@ -5,7 +5,7 @@
  *  This program is free software. You can redistribute and/or modify it in
  *  accordance with the terms of the accompanying license agreement.
  */
-package com.sgn.starlingbuilder.engine.format
+package starlingbuilder.engine.format
 {
     public interface IDataFormatter
     {

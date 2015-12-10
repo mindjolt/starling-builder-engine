@@ -5,9 +5,9 @@
  *  This program is free software. You can redistribute and/or modify it in
  *  accordance with the terms of the accompanying license agreement.
  */
-package com.sgn.starlingbuilder.engine.util
+package starlingbuilder.engine.util
 {
-    import com.sgn.starlingbuilder.engine.UIBuilder;
+    import starlingbuilder.engine.UIBuilder;
 
     import flash.utils.getDefinitionByName;
     import flash.utils.getQualifiedClassName;

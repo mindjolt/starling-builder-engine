@@ -5,15 +5,15 @@
  *  This program is free software. You can redistribute and/or modify it in
  *  accordance with the terms of the accompanying license agreement.
  */
-package com.sgn.starlingbuilder.engine
+package starlingbuilder.engine
 {
-    import com.sgn.starlingbuilder.engine.format.DefaultDataFormatter;
-    import com.sgn.starlingbuilder.engine.format.IDataFormatter;
-    import com.sgn.starlingbuilder.engine.format.StableJSONEncoder;
-    import com.sgn.starlingbuilder.engine.localization.ILocalization;
-    import com.sgn.starlingbuilder.engine.util.ObjectLocaterUtil;
-    import com.sgn.starlingbuilder.engine.util.ParamUtil;
-    import com.sgn.starlingbuilder.engine.util.SaveUtil;
+    import starlingbuilder.engine.format.DefaultDataFormatter;
+    import starlingbuilder.engine.format.IDataFormatter;
+    import starlingbuilder.engine.format.StableJSONEncoder;
+    import starlingbuilder.engine.localization.ILocalization;
+    import starlingbuilder.engine.util.ObjectLocaterUtil;
+    import starlingbuilder.engine.util.ParamUtil;
+    import starlingbuilder.engine.util.SaveUtil;
 
     import flash.geom.Rectangle;
     import flash.utils.ByteArray;

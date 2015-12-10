@@ -6,7 +6,7 @@
  *  accordance with the terms of the accompanying license agreement.
  */
 package {
-    import com.sgn.starlingbuilder.engine.util.StageUtil;
+    import starlingbuilder.engine.util.StageUtil;
 
     import flash.display.Sprite;
     import flash.events.Event;
