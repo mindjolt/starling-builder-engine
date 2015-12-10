@@ -55,20 +55,37 @@ package starlingbuilder.engine.util
             }
         }
 
-        public function getScaledStageSize(stageWidth:int, stageHeight:int):Point
+        /**
+         *  Algorithm supporting multiple resolutions
+         *
+         *  http://wiki.starling-framework.org/builder/multiple_resolution
+         *
+         */
+        public function getScaledStageSize(stageWidth:int = 0, stageHeight:int = 0):Point
         {
-            var tmp:Number;
-
-            var landscapeMode:Boolean = stageWidth > stageHeight;
-
-            if (landscapeMode)
+            if (stageWidth == 0 || stageHeight == 0)
             {
-                tmp = stageWidth;
-                stageWidth = stageHeight;
-                stageHeight = tmp;
+                stageWidth = this.stageWidth;
+                stageHeight = this.stageHeight;
             }
 
-            var maxRatio:Number = 1.0 * _designStageWidth / _designStageHeight;
+            var designWidth:int;
+            var designHeight:int;
+
+            var rotated:Boolean = ((stageWidth < stageHeight) != (_designStageWidth < _designStageHeight));
+
+            if (rotated)
+            {
+                designWidth = _designStageHeight;
+                designHeight = _designStageWidth;
+            }
+            else
+            {
+                designWidth = _designStageWidth;
+                designHeight = _designStageHeight;
+            }
+
+            var maxRatio:Number = 1.0 * designWidth / designHeight;
 
             var width:Number;
             var height:Number;
@@ -86,13 +103,6 @@ package starlingbuilder.engine.util
 
             width = scale * stageWidth;
             height = scale * stageHeight;
-
-            if (landscapeMode)
-            {
-                tmp = width;
-                width = height;
-                height = tmp;
-            }
 
             return new Point(Math.round(width), Math.round(height));
         }

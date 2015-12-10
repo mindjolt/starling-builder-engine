@@ -43,7 +43,7 @@ package {
             _starling = new Starling(UIBuilderDemo, stage);
 
             var stageUtil:StageUtil = new StageUtil(stage);
-            var size:Point = stageUtil.getScaledStageSize(stageUtil.stageWidth, stageUtil.stageHeight);
+            var size:Point = stageUtil.getScaledStageSize();
             _starling.stage.stageWidth = size.x;
             _starling.stage.stageHeight = size.y;
             _starling.showStats = true ;
