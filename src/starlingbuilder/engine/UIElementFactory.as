@@ -71,11 +71,18 @@ package starlingbuilder.engine
             if (param.cls == ParamUtil.getClassName(Texture))
             {
                 texture = _assetMediator.getTexture(param.textureName);
+
+                if (texture == null)
+                    throw new Error("Texture " + param.textureName + " not found");
+
                 return texture;
             }
             else if (param.cls == ParamUtil.getClassName(Scale3Textures))
             {
                 texture = _assetMediator.getTexture(param.textureName);
+
+                if (texture == null)
+                    throw new Error("Texture " + param.textureName + " not found");
 
                 scaleRatio = param.scaleRatio;
 
@@ -95,12 +102,16 @@ package starlingbuilder.engine
                 {
                     s3t = new Scale3Textures(texture, texture.height * scaleRatio[0], texture.height * scaleRatio[1], direction);
                 }
+
                 return s3t;
 
             }
             else if (param.cls == ParamUtil.getClassName(Scale9Textures))
             {
                 texture = _assetMediator.getTexture(param.textureName);
+
+                if (texture == null)
+                    throw new Error("Texture " + param.textureName + " not found");
 
                 scaleRatio = param.scaleRatio;
                 var rect:Rectangle = new Rectangle(texture.width * scaleRatio[0], texture.height * scaleRatio[1], texture.width * scaleRatio[2], texture.height * scaleRatio[3]);
