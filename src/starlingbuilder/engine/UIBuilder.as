@@ -359,5 +359,28 @@ package starlingbuilder.engine
                 }
             }
         }
+
+        /**
+         *  Helper function to find ui element
+         * @param container
+         * @param path can be separated by dot (e.g. bottom_container.layout.button1)
+         * @return
+         */
+        public static function find(container:DisplayObjectContainer, path:String):DisplayObject
+        {
+            var array:Array = path.split(".");
+
+            var obj:DisplayObject;
+
+            for each (var name:String in array)
+            {
+                if (container == null) return null;
+
+                obj = container.getChildByName(name);
+                container = obj as DisplayObjectContainer;
+            }
+
+            return obj;
+        }
     }
 }

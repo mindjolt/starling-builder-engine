@@ -9,7 +9,7 @@ package starlingbuilder.engine.util
 {
     public class SaveUtil
     {
-        public static function willSave(object:Object, param:Object, item:Object)
+        public static function willSave(object:Object, param:Object, item:Object):Boolean
         {
             if (object.hasOwnProperty("text") && param.name == "text" && item && item.customParams && item.customParams.localizeKey)
             {
