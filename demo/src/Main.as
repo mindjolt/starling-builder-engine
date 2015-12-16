@@ -40,10 +40,10 @@ package {
         {
             Starling.handleLostContext = true;
 
-            _starling = new Starling(UIBuilderDemo, stage);
-
             var stageUtil:StageUtil = new StageUtil(stage);
             var size:Point = stageUtil.getScaledStageSize();
+
+            _starling = new Starling(UIBuilderDemo, stage, new Rectangle(0, 0, stageUtil.stageWidth, stageUtil.stageHeight));
             _starling.stage.stageWidth = size.x;
             _starling.stage.stageHeight = size.y;
             _starling.showStats = true ;
