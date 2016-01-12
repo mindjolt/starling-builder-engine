@@ -11,6 +11,7 @@ package starlingbuilder.engine
     import starlingbuilder.engine.format.IDataFormatter;
     import starlingbuilder.engine.format.StableJSONEncoder;
     import starlingbuilder.engine.localization.ILocalization;
+    import starlingbuilder.engine.tween.ITweenBuilder;
     import starlingbuilder.engine.util.ObjectLocaterUtil;
     import starlingbuilder.engine.util.ParamUtil;
     import starlingbuilder.engine.util.SaveUtil;
@@ -39,7 +40,9 @@ package starlingbuilder.engine
 
         private var _localization:ILocalization;
 
-        public function UIBuilder(assetMediator:IAssetMediator, forEditor:Boolean = false, template:Object = null, localization:ILocalization = null)
+        private var _tweenBuilder:ITweenBuilder;
+
+        public function UIBuilder(assetMediator:IAssetMediator, forEditor:Boolean = false, template:Object = null, localization:ILocalization = null, tweenBuilder:ITweenBuilder = null)
         {
             _assetMediator = assetMediator;
             _dataFormatter = new DefaultDataFormatter();
@@ -47,6 +50,7 @@ package starlingbuilder.engine
             _forEditor = forEditor;
             _template = template;
             _localization = localization;
+            _tweenBuilder = tweenBuilder;
         }
 
         public function load(data:Object, trimLeadingSpace:Boolean = true):Object
@@ -191,6 +195,7 @@ package starlingbuilder.engine
             {
                 item.constructorParams = cloneObject(paramsData.constructorParams);
                 item.customParams = cloneObject(paramsData.customParams);
+                if (paramsData.tweenData) item.tweenData = cloneObject(paramsData.tweenData);
                 removeDefault(item, ParamUtil.getCustomParams(_template));
             }
 
@@ -359,6 +364,17 @@ package starlingbuilder.engine
                 }
             }
         }
+
+        public function get tweenBuilder():ITweenBuilder
+        {
+            return _tweenBuilder;
+        }
+
+        public function set tweenBuilder(value:ITweenBuilder):void
+        {
+            _tweenBuilder = value;
+        }
+
 
         /**
          *  Helper function to find ui element

@@ -72,9 +72,10 @@ package starlingbuilder.engine.util
             return template.default_component.customParams as Array;
         }
 
-
-
-
+        public static function getTweenParams(template:Object):Array
+        {
+            return template.default_component.tweenParams as Array;
+        }
 
         public static function getConstructorParams(template:Object, cls:String):Array
         {

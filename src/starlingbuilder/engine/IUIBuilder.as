@@ -12,6 +12,8 @@ package starlingbuilder.engine
     import starling.display.DisplayObject;
     import starling.display.DisplayObjectContainer;
 
+    import starlingbuilder.engine.tween.ITweenBuilder;
+
     public interface IUIBuilder
     {
         /**
@@ -119,6 +121,18 @@ package starlingbuilder.engine
          * @return
          */
         function create(data:Object, trimLeadingSpace:Boolean = true):Object
+
+
+        /**
+         * Tween Builder getter
+         */
+        function get tweenBuilder():ITweenBuilder
+
+
+        /**
+         * Tween Builder setter
+         */
+        function set tweenBuilder(value:ITweenBuilder):void
         
     }
 }
