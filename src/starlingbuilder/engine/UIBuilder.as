@@ -10,7 +10,9 @@ package starlingbuilder.engine
     import starlingbuilder.engine.format.DefaultDataFormatter;
     import starlingbuilder.engine.format.IDataFormatter;
     import starlingbuilder.engine.format.StableJSONEncoder;
+    import starlingbuilder.engine.localization.DefaultLocalizationHandler;
     import starlingbuilder.engine.localization.ILocalization;
+    import starlingbuilder.engine.localization.ILocalizationHandler;
     import starlingbuilder.engine.tween.ITweenBuilder;
     import starlingbuilder.engine.util.ObjectLocaterUtil;
     import starlingbuilder.engine.util.ParamUtil;
@@ -40,6 +42,8 @@ package starlingbuilder.engine
 
         private var _localization:ILocalization;
 
+        private var _localizationHandler:ILocalizationHandler;
+
         private var _tweenBuilder:ITweenBuilder;
 
         public function UIBuilder(assetMediator:IAssetMediator, forEditor:Boolean = false, template:Object = null, localization:ILocalization = null, tweenBuilder:ITweenBuilder = null)
@@ -50,6 +54,7 @@ package starlingbuilder.engine
             _forEditor = forEditor;
             _template = template;
             _localization = localization;
+            _localizationHandler = new DefaultLocalizationHandler();
             _tweenBuilder = tweenBuilder;
         }
 
@@ -348,10 +353,16 @@ package starlingbuilder.engine
         {
             var params:Object = paramsDict[object];
 
-            if (object.hasOwnProperty("text") && params && params.customParams && params.customParams.localizeKey)
+            if (params && params.customParams && params.customParams.localizeKey)
             {
                 var text:String = _localization.getLocalizedText(params.customParams.localizeKey);
-                if (text) object["text"] = text;
+                if (text == null) text = params.customParams.localizeKey;
+
+                if (object.hasOwnProperty("text")) object["text"] = text;
+                if (object.hasOwnProperty("label")) object["label"] = text;
+
+                if (_localizationHandler)
+                    _localizationHandler.localize(object, text, paramsDict);
             }
 
             var container:DisplayObjectContainer = object as DisplayObjectContainer;
@@ -375,6 +386,15 @@ package starlingbuilder.engine
             _tweenBuilder = value;
         }
 
+        public function get localizationHandler():ILocalizationHandler
+        {
+            return _localizationHandler;
+        }
+
+        public function set localizationHandler(value:ILocalizationHandler):void
+        {
+            _localizationHandler = value;
+        }
 
         /**
          *  Helper function to find ui element

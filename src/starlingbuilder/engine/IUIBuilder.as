@@ -12,6 +12,8 @@ package starlingbuilder.engine
     import starling.display.DisplayObject;
     import starling.display.DisplayObjectContainer;
 
+    import starlingbuilder.engine.localization.ILocalizationHandler;
+
     import starlingbuilder.engine.tween.ITweenBuilder;
 
     public interface IUIBuilder
@@ -133,6 +135,18 @@ package starlingbuilder.engine
          * Tween Builder setter
          */
         function set tweenBuilder(value:ITweenBuilder):void
+
+
+        /**
+         * localizationHandler getter
+         */
+        function get localizationHandler():ILocalizationHandler
+
+
+        /**
+         * localizationHandler setter
+         */
+        function set localizationHandler(value:ILocalizationHandler):void
         
     }
 }
