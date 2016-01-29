@@ -418,5 +418,32 @@ package starlingbuilder.engine
 
             return obj;
         }
+
+        /**
+         *  Helper function to loop through all the top level display objects,
+         *  If the name starts with "_", then bind to the object property with the same name.
+         *
+         *  NOTE: This function will ONLY work if your object._xxx is public variable.
+         *  Use it at your own risk since it breaks rules of data encapsulation
+         *
+         * @param container
+         * @param object
+         */
+        public static function bind(container:DisplayObjectContainer, object:Object):void
+        {
+            for (var i:int = 0; i < container.numChildren; ++i)
+            {
+                var child:DisplayObject = container.getChildAt(i);
+                var name:String = child.name;
+
+                if (name && name.charAt(0) == "_")
+                {
+                    if (object.hasOwnProperty(name))
+                        object[name] = child;
+                    else
+                        throw new Error("Property name not defined: ", name);
+                }
+            }
+        }
     }
 }
