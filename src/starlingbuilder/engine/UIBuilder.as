@@ -206,7 +206,7 @@ package starlingbuilder.engine
 
             for each (var param:Object in params)
             {
-                if (obj.hasOwnProperty(param.name))
+                if (willSaveProperty(obj, param, item))
                 {
                     if (param.hasOwnProperty("cls"))
                     {
@@ -222,8 +222,7 @@ package starlingbuilder.engine
                     }
                     else
                     {
-                        if (willSaveProperty(obj, param, item))
-                            saveProperty(item.params, obj, param.name);
+                        saveProperty(item.params, obj, param.name);
                     }
                 }
             }
@@ -260,6 +259,11 @@ package starlingbuilder.engine
 
         private static function willSaveProperty(obj:Object, param:Object, item:Object):Boolean
         {
+            if (!obj.hasOwnProperty(param.name))
+            {
+                return false;
+            }
+
             //Won't save default NaN value, plus it's not supported in json format
             if (param.default_value == "NaN" && isNaN(obj[param.name]))
             {
