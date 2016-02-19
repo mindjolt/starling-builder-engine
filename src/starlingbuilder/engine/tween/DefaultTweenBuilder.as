@@ -80,6 +80,9 @@ package starlingbuilder.engine.tween
 
         example data2:
         [{"properties":{"repeatCount":0,"scaleY":0.9,"reverse":true,"scaleX":0.9},"time":1},{"properties":{"repeatCount":0,"alpha":0,"reverse":true},"time":0.5}]
+
+        example data3:
+        {"time":0.5,"properties":{"repeatCount":0,"reverse":true},"delta":{"y":-10}}
         */
         private function createTweenFrom(obj:DisplayObject, data:Object):void
         {
@@ -95,11 +98,15 @@ package starlingbuilder.engine.tween
                 return;
             }
 
-            var initData:Object = saveInitData(obj, data.properties);
+            var initData:Object = saveInitData(obj, data.properties, data.delta);
 
             setFrom(obj, data.from);
 
-            var tween:Tween = Starling.current.juggler.tween(obj, data.time, data.properties) as Tween;
+            var properties:Object = UIBuilder.cloneObject(data.properties);
+
+            setDelta(obj, data.delta, properties);
+
+            var tween:Tween = Starling.current.juggler.tween(obj, data.time, properties) as Tween;
 
             if (!_saveData[obj]) _saveData[obj] = [];
 
@@ -153,6 +160,14 @@ package starlingbuilder.engine.tween
             }
         }
 
+        private function setDelta(obj:Object, delta:Object, properties:Object):void
+        {
+            for (var id:String in delta)
+            {
+                properties[id] = obj[id] + delta[id];
+            }
+        }
+
         private function recoverInitData(obj:Object, initData:Object):void
         {
             for (var name:String in initData)
@@ -161,11 +176,20 @@ package starlingbuilder.engine.tween
             }
         }
 
-        private function saveInitData(obj:Object, properties:Object):Object
+        private function saveInitData(obj:Object, properties:Object, delta:Object):Object
         {
             var data:Object = {};
+            var name:String;
 
-            for (var name:String in properties)
+            for (name in properties)
+            {
+                if (obj.hasOwnProperty(name))
+                {
+                    data[name] = obj[name];
+                }
+            }
+
+            for (name in delta)
             {
                 if (obj.hasOwnProperty(name))
                 {
