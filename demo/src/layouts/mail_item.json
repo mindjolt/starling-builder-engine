@@ -1,144 +1,142 @@
 {
-  "layout": {
-    "customParams": {
-      "container": 1
-    },
-    "cls": "starling.display.Sprite",
-    "params": {
-      "name": null
-    },
-    "children": [
+  "layout":{
+    "children":[
       {
-        "customParams": {
-          "forEditor": true
+        "cls":"feathers.controls.List",
+        "customParams":{
+          "forEditor":true
         },
-        "cls": "feathers.controls.List",
-        "params": {
-          "name": "obj1",
-          "width": 534,
-          "y": 166,
-          "height": 515,
-          "x": 53
+        "params":{
+          "height":515,
+          "name":"obj1",
+          "width":534,
+          "x":53,
+          "y":166
         }
       },
       {
-        "customParams": {},
-        "cls": "feathers.display.Scale9Image",
-        "constructorParams": [
+        "cls":"feathers.display.Scale9Image",
+        "constructorParams":[
           {
-            "cls": "feathers.textures.Scale9Textures",
-            "textureName": "generic_box_white",
-            "scaleRatio": [
+            "cls":"feathers.textures.Scale9Textures",
+            "scaleRatio":[
               0.3,
               0.3,
               0.4,
               0.4
-            ]
+            ],
+            "textureName":"generic_box_white"
           }
         ],
-        "params": {
-          "name": "generic_box_white",
-          "width": 517,
-          "y": 172.5,
-          "height": 112,
-          "x": 62
+        "customParams":{},
+        "params":{
+          "height":112,
+          "name":"generic_box_white",
+          "width":517,
+          "x":62,
+          "y":172.5
         }
       },
       {
-        "customParams": {},
-        "cls": "starling.display.Image",
-        "constructorParams": [
+        "cls":"starling.display.Image",
+        "constructorParams":[
           {
-            "cls": "starling.textures.Texture",
-            "textureName": "generic_gift"
+            "cls":"starling.textures.Texture",
+            "textureName":"generic_gift"
           }
         ],
-        "params": {
-          "name": "generic_gift",
-          "width": 77,
-          "y": 186,
-          "height": 83,
-          "x": 493
+        "customParams":{},
+        "params":{
+          "name":"generic_gift",
+          "scaleX":1.01,
+          "scaleY":1.01,
+          "x":493,
+          "y":186
         }
       },
       {
-        "customParams": {},
-        "cls": "starling.display.Image",
-        "constructorParams": [
+        "cls":"starling.display.Image",
+        "constructorParams":[
           {
-            "cls": "starling.textures.Texture",
-            "textureName": "generic_app_icon"
+            "cls":"starling.textures.Texture",
+            "textureName":"generic_app_icon"
           }
         ],
-        "params": {
-          "name": "generic_app_icon",
-          "width": 76,
-          "y": 186,
-          "height": 77,
-          "x": 132
+        "customParams":{},
+        "params":{
+          "name":"generic_app_icon",
+          "scaleY":1.01,
+          "x":132,
+          "y":186
         }
       },
       {
-        "customParams": {},
-        "cls": "starling.text.TextField",
-        "constructorParams": [
+        "cls":"starling.text.TextField",
+        "constructorParams":[
           {
-            "value": 200
+            "value":200
           },
           {
-            "value": 100
+            "value":100
           },
           {
-            "value": "Abc123"
+            "value":"Abc123"
           },
           {
-            "value": "GrilledCheeseBTN_Size36_ColorFFFFFF",
-            "name": "fontName"
+            "name":"fontName",
+            "value":"GrilledCheeseBTN_Size36_ColorFFFFFF"
           },
           {
-            "value": 46
+            "value":46
           },
           {
-            "value": 16777215
+            "value":16777215
           }
         ],
-        "params": {
-          "width": 267,
-          "y": 204.5,
-          "fontName": "GrilledCheeseBTN_Size36_ColorFFFFFF",
-          "text": "You received a gift!",
-          "autoScale": true,
-          "color": 12273920,
-          "name": "GrilledCheeseBTN_Size36_ColorFFFFFF",
-          "height": 46,
-          "fontSize": 37,
-          "x": 215
+        "customParams":{},
+        "params":{
+          "autoScale":true,
+          "color":12273920,
+          "fontName":"GrilledCheeseBTN_Size36_ColorFFFFFF",
+          "fontSize":37,
+          "height":46,
+          "name":"GrilledCheeseBTN_Size36_ColorFFFFFF",
+          "text":"You received a gift!",
+          "width":267,
+          "x":215,
+          "y":204.5
         }
       },
       {
-        "customParams": {},
-        "cls": "starling.display.Image",
-        "constructorParams": [
+        "cls":"starling.display.Image",
+        "constructorParams":[
           {
-            "cls": "starling.textures.Texture",
-            "textureName": "generic_check_bg"
+            "cls":"starling.textures.Texture",
+            "textureName":"generic_check_bg"
           }
         ],
-        "params": {
-          "name": "generic_check_bg",
-          "width": 45,
-          "y": 201.5,
-          "height": 46,
-          "x": 71
+        "customParams":{},
+        "params":{
+          "name":"generic_check_bg",
+          "x":71,
+          "y":201.5
         }
       }
-    ]
-  },
-  "setting": {
-    "canvasSize": {
-      "y": 960,
-      "x": 640
+    ],
+    "cls":"starling.display.Sprite",
+    "customParams":{
+      "container":1
+    },
+    "params":{
+      "name":null
     }
   },
-  "version": "1.0"
+  "setting":{
+    "canvasColor":16777215,
+    "canvasSize":{
+      "x":640,
+      "y":960
+    }
+  },
+  "version":"1.0"
 }

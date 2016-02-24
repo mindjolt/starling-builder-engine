@@ -35,6 +35,7 @@
         "params":{
           "height":74,
           "name":"generic_exit",
+          "scaleY":1.01,
           "width":77,
           "x":559.5,
           "y":41
@@ -50,9 +51,7 @@
         ],
         "customParams":{},
         "params":{
-          "height":85,
           "name":"title_bg",
-          "width":419,
           "x":108,
           "y":16.5
         }
@@ -84,11 +83,11 @@
           "autoSize":"bothDirections",
           "fontName":"LobsterTwoRegular_Size54_ColorFFFFFF_StrokeAF384E_DropShadow560D1B",
           "fontSize":55,
-          "height":58.05555555555557,
+          "height":58.06,
           "name":"LobsterTwoRegular_Size54_ColorFFFFFF_StrokeAF384E_DropShadow560D1B",
           "text":"Inbox",
-          "width":135.462962962963,
-          "x":249.7685185185186,
+          "width":135.46,
+          "x":249.77,
           "y":36
         }
       },
@@ -99,7 +98,7 @@
           "height":515,
           "name":"obj1",
           "width":534,
-          "x":54.500000000000114,
+          "x":54.5,
           "y":122
         }
       }
@@ -113,6 +112,7 @@
     }
   },
   "setting":{
+    "canvasColor":16777215,
     "canvasSize":{
       "x":640,
       "y":860
