@@ -9,6 +9,8 @@ package starlingbuilder.engine.format
 {
     public class DefaultDataFormatter implements IDataFormatter
     {
+        private var _prettyData:Boolean = true;
+
         public function read(data:Object):Object
         {
             if (data is String)
@@ -23,10 +25,24 @@ package starlingbuilder.engine.format
 
         public function write(data:Object):Object
         {
-            //return JSON.stringify(data, null, 2);
-
-            return StableJSONEncoder.stringify(data);
+            if (_prettyData)
+            {
+                return StableJSONEncoder.stringify(data, 2);
+            }
+            else
+            {
+                return StableJSONEncoder.stringify(data, 0);
+            }
         }
 
+        public function get prettyData():Boolean
+        {
+            return _prettyData;
+        }
+
+        public function set prettyData(value:Boolean):void
+        {
+            _prettyData = value;
+        }
     }
 }

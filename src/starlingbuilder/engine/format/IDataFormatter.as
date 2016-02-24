@@ -11,5 +11,8 @@ package starlingbuilder.engine.format
     {
         function read(data:Object):Object;
         function write(data:Object):Object;
+
+        function get prettyData():Boolean;
+        function set prettyData(value:Boolean):void;
     }
 }

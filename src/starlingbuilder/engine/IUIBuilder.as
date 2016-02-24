@@ -147,6 +147,19 @@ package starlingbuilder.engine
          * localizationHandler setter
          */
         function set localizationHandler(value:ILocalizationHandler):void
+
+
+        /**
+         * prettyData getter
+         */
+        function get prettyData():Boolean
+
+
+        /**
+         * prettyData setter
+         * @param value
+         */
+        function set prettyData(value:Boolean):void
         
     }
 }

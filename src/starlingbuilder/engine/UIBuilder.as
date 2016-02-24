@@ -400,6 +400,16 @@ package starlingbuilder.engine
             _localizationHandler = value;
         }
 
+        public function get prettyData():Boolean
+        {
+            return _dataFormatter.prettyData;
+        }
+
+        public function set prettyData(value:Boolean):void
+        {
+            _dataFormatter.prettyData = value;
+        }
+
         /**
          *  Helper function to find ui element
          * @param container
