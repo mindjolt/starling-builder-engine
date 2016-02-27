@@ -9,9 +9,6 @@ package starlingbuilder.engine
 {
     import starlingbuilder.engine.util.ParamUtil;
 
-    import feathers.textures.Scale3Textures;
-    import feathers.textures.Scale9Textures;
-
     import flash.geom.Rectangle;
     import flash.utils.getDefinitionByName;
 
@@ -67,6 +64,7 @@ package starlingbuilder.engine
         {
             var texture:Texture;
             var scaleRatio:Array;
+            var cls:Class;
 
             if (param.cls == ParamUtil.getClassName(Texture))
             {
@@ -77,7 +75,7 @@ package starlingbuilder.engine
 
                 return texture;
             }
-            else if (param.cls == ParamUtil.getClassName(Scale3Textures))
+            else if (param.cls == "feathers.textures.Scale3Textures")
             {
                 texture = _assetMediator.getTexture(param.textureName);
 
@@ -86,27 +84,28 @@ package starlingbuilder.engine
 
                 scaleRatio = param.scaleRatio;
 
-                var direction:String = Scale3Textures.DIRECTION_HORIZONTAL;
+                var direction:String = "horizontal";
 
                 if (scaleRatio.length == 3)
                 {
                     direction = scaleRatio[2];
                 }
 
-                var s3t:Scale3Textures;
-                if (direction == Scale3Textures.DIRECTION_HORIZONTAL)
+                var s3t:Object;
+                cls = getDefinitionByName("feathers.textures.Scale3Textures") as Class;
+                if (direction == "horizontal")
                 {
-                    s3t = new Scale3Textures(texture, texture.width * scaleRatio[0], texture.width * scaleRatio[1], direction);
+                    s3t = new cls(texture, texture.width * scaleRatio[0], texture.width * scaleRatio[1], direction);
                 }
                 else
                 {
-                    s3t = new Scale3Textures(texture, texture.height * scaleRatio[0], texture.height * scaleRatio[1], direction);
+                    s3t = new cls(texture, texture.height * scaleRatio[0], texture.height * scaleRatio[1], direction);
                 }
 
                 return s3t;
 
             }
-            else if (param.cls == ParamUtil.getClassName(Scale9Textures))
+            else if (param.cls == "feathers.textures.Scale9Textures")
             {
                 texture = _assetMediator.getTexture(param.textureName);
 
@@ -115,7 +114,8 @@ package starlingbuilder.engine
 
                 scaleRatio = param.scaleRatio;
                 var rect:Rectangle = new Rectangle(texture.width * scaleRatio[0], texture.height * scaleRatio[1], texture.width * scaleRatio[2], texture.height * scaleRatio[3]);
-                var s9t:Scale9Textures = new Scale9Textures(texture, rect);
+                cls = getDefinitionByName("feathers.textures.Scale9Textures") as Class;
+                var s9t:Object = new cls(texture, rect);
                 return s9t;
             }
             else if (param.cls == ParamUtil.getClassName(Vector.<Texture>))
