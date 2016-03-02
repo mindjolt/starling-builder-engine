@@ -26,7 +26,16 @@ package starlingbuilder.engine.util
 
         public static function getParamByClassName(template:Object, className:String):Array
         {
-            var params:Array = template.default_component.params.concat();
+            var params:Array;
+
+            if (getFlag(template, className, "tag") == "ignore_default")
+            {
+                params = [];
+            }
+            else
+            {
+                params = template.default_component.params.concat();
+            }
 
             if (getFlag(template, className, "tag") == "feathers")
             {
@@ -47,7 +56,6 @@ package starlingbuilder.engine.util
             }
 
             return params;
-
         }
 
         public static function getClassName(obj:Object):String
