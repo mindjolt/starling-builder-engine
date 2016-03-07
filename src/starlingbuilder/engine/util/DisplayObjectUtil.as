@@ -13,11 +13,15 @@ package starlingbuilder.engine.util
     import flash.geom.Rectangle;
 
     import starling.display.DisplayObject;
-    import starling.utils.HAlign;
-    import starling.utils.VAlign;
 
     public class DisplayObjectUtil
     {
+        public static const LEFT:String = "left";
+        public static const RIGHT:String = "right";
+        public static const CENTER:String = "center";
+        public static const TOP:String = "top";
+        public static const BOTTOM:String = "bottom";
+
         public static function movePivotTo(obj:DisplayObject, x:Number, y:Number):void
         {
             var rect1:Rectangle =  obj.getBounds(obj.parent);
@@ -51,14 +55,14 @@ package starlingbuilder.engine.util
             var pivotX:Number;
             var pivotY:Number;
 
-            if (hAlign == HAlign.LEFT)        pivotX = bounds.x;
-            else if (hAlign == HAlign.CENTER) pivotX = bounds.x + bounds.width / 2.0;
-            else if (hAlign == HAlign.RIGHT)  pivotX = bounds.x + bounds.width;
+            if (hAlign == LEFT)        pivotX = bounds.x;
+            else if (hAlign == CENTER) pivotX = bounds.x + bounds.width / 2.0;
+            else if (hAlign == RIGHT)  pivotX = bounds.x + bounds.width;
             else throw new ArgumentError("Invalid horizontal alignment: " + hAlign);
 
-            if (vAlign == VAlign.TOP)         pivotY = bounds.y;
-            else if (vAlign == VAlign.CENTER) pivotY = bounds.y + bounds.height / 2.0;
-            else if (vAlign == VAlign.BOTTOM) pivotY = bounds.y + bounds.height;
+            if (vAlign == TOP)         pivotY = bounds.y;
+            else if (vAlign == CENTER) pivotY = bounds.y + bounds.height / 2.0;
+            else if (vAlign == BOTTOM) pivotY = bounds.y + bounds.height;
             else throw new ArgumentError("Invalid vertical alignment: " + vAlign);
 
             return new Point(pivotX, pivotY);
