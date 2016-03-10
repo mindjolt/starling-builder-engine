@@ -72,7 +72,7 @@ package starlingbuilder.demo {
             return [
                 {label:"connect popup", triggered:createConnectPopup},
                 {label:"mail popup", triggered:createMailPopup},
-                {label:"starlingbuilder.demo.HUD", triggered:createHUD},
+                {label:"HUD", triggered:createHUD},
                 {label:"localization", triggered:createLocalizationTest},
                 {label:"tween", triggered:createTweenTest},
                 {label:"external layout", triggered:createExternalElement},
