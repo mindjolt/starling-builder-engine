@@ -33,7 +33,7 @@ package starlingbuilder.demo {
         public static const linkers:Array = [AnchorLayout, FlowLayout, HorizontalLayout, VerticalLayout, TiledRowsLayout, BlurFilter];
 
         private var _assetManager:AssetManager;
-        private var _assetMediator:AssetMediator;
+        private var _assetMediator:starlingbuilder.demo.AssetMediator;
 
         public static var uiBuilder:IUIBuilder;
         public static var localization:ILocalization;
@@ -41,14 +41,14 @@ package starlingbuilder.demo {
         public function UIBuilderDemo()
         {
             _assetManager = new AssetManager();
-            _assetMediator = new AssetMediator(_assetManager);
+            _assetMediator = new starlingbuilder.demo.AssetMediator(_assetManager);
 
             localization = new DefaultLocalization(JSON.parse(new EmbeddedAssets.strings), "en_US");
             uiBuilder = new UIBuilder(_assetMediator, false, null, localization, new DefaultTweenBuilder());
 
             new MetalWorksMobileTheme(false);
 
-            parseLayouts(EmbeddedLayouts, ParsedLayouts);
+            parseLayouts(starlingbuilder.demo.EmbeddedLayouts, ParsedLayouts);
 
             _assetManager.enqueue(EmbeddedAssets);
             //_assetManager.enqueue(File.applicationDirectory.resolvePath("textures"));
