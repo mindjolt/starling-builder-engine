@@ -19,5 +19,23 @@ package {
 
         [Embed(source="layouts/hud.json", mimeType="application/octet-stream")]
         public static const hud:Class;
+
+        [Embed(source="layouts/localization_test.json", mimeType="application/octet-stream")]
+        public static const localization_test:Class;
+
+        [Embed(source="layouts/tween_test.json", mimeType="application/octet-stream")]
+        public static const tween_test:Class;
+
+        [Embed(source="layouts/external_element_test.json", mimeType="application/octet-stream")]
+        public static const external_element_test:Class;
+
+        [Embed(source="layouts/movieclip_test.json", mimeType="application/octet-stream")]
+        public static const movieclip_test:Class;
+
+        [Embed(source="layouts/layout_test.json", mimeType="application/octet-stream")]
+        public static const layout_test:Class;
+
+        [Embed(source="layouts/anchorlayout_test.json", mimeType="application/octet-stream")]
+        public static const anchorlayout_test:Class;
     }
 }

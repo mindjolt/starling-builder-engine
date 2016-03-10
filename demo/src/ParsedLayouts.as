@@ -15,5 +15,17 @@ package {
         public static var mail_item:Object;
 
         public static var hud:Object;
+
+        public static var localization_test:Object;
+
+        public static var tween_test:Object;
+
+        public static var external_element_test:Object;
+
+        public static var movieclip_test:Object;
+
+        public static var layout_test:Object;
+
+        public static var anchorlayout_test:Object;
     }
 }

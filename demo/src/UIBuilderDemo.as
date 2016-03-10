@@ -6,44 +6,50 @@
  *  accordance with the terms of the accompanying license agreement.
  */
 package {
-    import starlingbuilder.engine.IAssetMediator;
-    import starlingbuilder.engine.IUIBuilder;
-    import starlingbuilder.engine.UIBuilder;
-
     import feathers.controls.ButtonGroup;
     import feathers.core.PopUpManager;
     import feathers.data.ListCollection;
+    import feathers.layout.AnchorLayout;
+    import feathers.layout.FlowLayout;
     import feathers.layout.HorizontalLayout;
     import feathers.layout.TiledRowsLayout;
+    import feathers.layout.VerticalLayout;
     import feathers.themes.MetalWorksMobileTheme;
 
-    import flash.filesystem.File;
     import flash.utils.describeType;
 
     import starling.display.Sprite;
-    import starling.textures.Texture;
+    import starling.filters.BlurFilter;
     import starling.utils.AssetManager;
 
-    public class UIBuilderDemo extends Sprite implements IAssetMediator
+    import starlingbuilder.engine.IUIBuilder;
+    import starlingbuilder.engine.UIBuilder;
+    import starlingbuilder.engine.localization.DefaultLocalization;
+    import starlingbuilder.engine.localization.ILocalization;
+    import starlingbuilder.engine.tween.DefaultTweenBuilder;
+
+    public class UIBuilderDemo extends Sprite
     {
-        public static const linkers:Array = [TiledRowsLayout, HorizontalLayout];
+        public static const linkers:Array = [AnchorLayout, FlowLayout, HorizontalLayout, VerticalLayout, TiledRowsLayout, BlurFilter];
 
         private var _assetManager:AssetManager;
+        private var _assetMediator:AssetMediator;
 
         public static var uiBuilder:IUIBuilder;
+        public static var localization:ILocalization;
 
         public function UIBuilderDemo()
         {
-            if (uiBuilder == null)
-            {
-                uiBuilder = new UIBuilder(this);
-            }
+            _assetManager = new AssetManager();
+            _assetMediator = new AssetMediator(_assetManager);
+
+            localization = new DefaultLocalization(JSON.parse(new EmbeddedAssets.strings), "en_US");
+            uiBuilder = new UIBuilder(_assetMediator, false, null, localization, new DefaultTweenBuilder());
 
             new MetalWorksMobileTheme(false);
 
             parseLayouts(EmbeddedLayouts, ParsedLayouts);
 
-            _assetManager = new AssetManager();
             _assetManager.enqueue(EmbeddedAssets);
             //_assetManager.enqueue(File.applicationDirectory.resolvePath("textures"));
             _assetManager.loadQueue(function(ratio:Number):void{
@@ -67,6 +73,12 @@ package {
                 {label:"connect popup", triggered:createConnectPopup},
                 {label:"mail popup", triggered:createMailPopup},
                 {label:"HUD", triggered:createHUD},
+                {label:"localization", triggered:createLocalizationTest},
+                {label:"tween", triggered:createTweenTest},
+                {label:"external layout", triggered:createExternalElement},
+                {label:"movie clip", triggered:createMovieClipTest},
+                {label:"layout", triggered:createLayoutTest},
+                {label:"anchor layout", triggered:createAnchorLayoutTest}
             ]
         }
 
@@ -88,19 +100,40 @@ package {
             addChild(hud);
         }
 
-        public function getTexture(name:String):Texture
+        private function createLocalizationTest():void
         {
-            return _assetManager.getTexture(name);
+            var test:LocalizationTest = new LocalizationTest();
+            addChild(test);
         }
 
-        public function getTextures(prefix:String="", result:Vector.<Texture>=null):Vector.<Texture>
+        private function createTweenTest():void
         {
-            return _assetManager.getTextures(prefix, result);
+            var test:TweenTest = new TweenTest();
+            addChild(test);
         }
 
-        public function getExternalData(name:String):Object
+        private function createExternalElement():void
         {
-            return null;
+            var test:ExternalElementTest = new ExternalElementTest();
+            addChild(test);
+        }
+
+        private function createMovieClipTest():void
+        {
+            var test:MovieClipTest = new MovieClipTest();
+            addChild(test);
+        }
+
+        private function createLayoutTest():void
+        {
+            var test:LayoutTest = new LayoutTest();
+            addChild(test);
+        }
+
+        private function createAnchorLayoutTest():void
+        {
+            var test:AnchorLayoutTest = new AnchorLayoutTest();
+            addChild(test);
         }
 
         private function parseLayouts(fromCls:Class, toCls:Class):void

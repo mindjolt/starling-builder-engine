@@ -9,7 +9,7 @@ package
 {
     public class EmbeddedAssets
     {
-
+        //textures
         [Embed(source="../assets/textures/ui.png")]
         public static const ui:Class;
 
@@ -17,7 +17,7 @@ package
         public static const ui_xml:Class;
 
 
-
+        //fonts
         [Embed(source="../assets/textures/fonts/GrilledCheeseBTN_Size18_ColorFFFFFF_StrokeA8364B.png")]
         public static const GrilledCheeseBTN_Size18_ColorFFFFFF_StrokeA8364B:Class;
 
@@ -43,9 +43,8 @@ package
         public static const LobsterTwoRegular_Size54_ColorFFFFFF_StrokeAF384E_DropShadow560D1B_fnt:Class;
 
 
-
-
-
-
+        //localization strings
+        [Embed(source="../assets/strings.json", mimeType="application/octet-stream")]
+        public static const strings:Class;
     }
 }
