@@ -38,6 +38,20 @@
         <packaging-android />
         <packaging-ios />
       </configuration>
+      <configuration name="scaffold" target-platform="Mobile" pure-as="true" main-class="Main" output-file="scaffold.swf" output-folder="$MODULE_DIR$/out/production/starling-builder-client">
+        <dependencies>
+          <entries>
+            <entry library-id="9d92c6b2-f0c5-4876-9c27-8dac70b06d82">
+              <dependency linkage="Merged" />
+            </entry>
+          </entries>
+          <sdk name="AIRSDK" />
+        </dependencies>
+        <compiler-options />
+        <packaging-air-desktop />
+        <packaging-android enabled="true" use-generated-descriptor="false" custom-descriptor-path="$MODULE_DIR$/scaffold/src/Main-app.xml" package-file-name="scaffold" />
+        <packaging-ios enabled="true" use-generated-descriptor="false" custom-descriptor-path="$MODULE_DIR$/scaffold/src/Main-app.xml" package-file-name="scaffold" />
+      </configuration>
     </configurations>
     <compiler-options />
   </component>
@@ -47,6 +61,7 @@
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/demo/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/demo/assets" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/scaffold/src" isTestSource="false" />
     </content>
     <orderEntry type="jdk" jdkName="AIRSDK" jdkType="Flex SDK Type (new)" />
     <orderEntry type="sourceFolder" forTests="false" />
@@ -70,6 +85,17 @@
         <JAVADOC />
         <SOURCES />
         <jarDirectory url="file://$MODULE_DIR$/demo/libs" recursive="false" />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library type="flex">
+        <properties id="9d92c6b2-f0c5-4876-9c27-8dac70b06d82" />
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/scaffold/libs" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+        <jarDirectory url="file://$MODULE_DIR$/scaffold/libs" recursive="false" />
       </library>
     </orderEntry>
   </component>
