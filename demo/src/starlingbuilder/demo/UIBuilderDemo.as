@@ -5,7 +5,7 @@
  *  This program is free software. You can redistribute and/or modify it in
  *  accordance with the terms of the accompanying license agreement.
  */
-package {
+package starlingbuilder.demo {
     import feathers.controls.ButtonGroup;
     import feathers.core.PopUpManager;
     import feathers.data.ListCollection;
@@ -72,7 +72,7 @@ package {
             return [
                 {label:"connect popup", triggered:createConnectPopup},
                 {label:"mail popup", triggered:createMailPopup},
-                {label:"HUD", triggered:createHUD},
+                {label:"starlingbuilder.demo.HUD", triggered:createHUD},
                 {label:"localization", triggered:createLocalizationTest},
                 {label:"tween", triggered:createTweenTest},
                 {label:"external layout", triggered:createExternalElement},

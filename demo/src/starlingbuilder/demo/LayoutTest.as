@@ -5,28 +5,21 @@
  *  This program is free software. You can redistribute and/or modify it in
  *  accordance with the terms of the accompanying license agreement.
  */
-package
+package starlingbuilder.demo
 {
-    import starling.core.Starling;
-    import starling.display.MovieClip;
     import starling.display.Sprite;
     import starling.events.Touch;
     import starling.events.TouchEvent;
     import starling.events.TouchPhase;
 
-    public class MovieClipTest extends Sprite
+    public class LayoutTest extends Sprite
     {
         private var _sprite:Sprite;
-        private var _movieClip:MovieClip;
 
-        public function MovieClipTest()
+        public function LayoutTest()
         {
-            _sprite = UIBuilderDemo.uiBuilder.create(ParsedLayouts.movieclip_test, false) as Sprite;
+            _sprite = UIBuilderDemo.uiBuilder.create(ParsedLayouts.layout_test, false) as Sprite;
             addChild(_sprite);
-
-            _movieClip = _sprite.getChildByName("movieClip") as MovieClip;
-            Starling.current.juggler.add(_movieClip);
-            _movieClip.play();
 
             addEventListener(TouchEvent.TOUCH, onTouch);
         }
@@ -38,12 +31,6 @@ package
             {
                 removeFromParent(true);
             }
-        }
-
-        override public function dispose():void
-        {
-            Starling.current.juggler.remove(_movieClip);
-            super.dispose();
         }
     }
 }

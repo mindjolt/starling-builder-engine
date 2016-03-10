@@ -2,7 +2,7 @@
 <module type="Flex" version="4">
   <component name="FlexBuildConfigurationManager" active="demo">
     <configurations>
-      <configuration name="demo" target-platform="Mobile" pure-as="true" main-class="Main" output-file="starling-builder-client.swf" output-folder="$MODULE_DIR$/out/production/starling-builder-client">
+      <configuration name="demo" target-platform="Mobile" pure-as="true" main-class="starlingbuilder.demo.Main" output-file="starling-builder-client.swf" output-folder="$MODULE_DIR$/out/production/starling-builder-client">
         <dependencies target-player="18.0">
           <entries>
             <entry library-id="c40f183f-b2f9-4997-ac10-585569d3cf5b">
@@ -13,19 +13,19 @@
         </dependencies>
         <compiler-options />
         <packaging-air-desktop />
-        <packaging-android enabled="true" use-generated-descriptor="false" custom-descriptor-path="$MODULE_DIR$/demo/src/Main-app.xml" package-file-name="starling-builder-client">
+        <packaging-android enabled="true" use-generated-descriptor="false" custom-descriptor-path="$MODULE_DIR$/demo/src/starlingbuilder/demo/Main-app.xml" package-file-name="starling-builder-client">
           <files-to-package>
             <FilePathAndPathInPackage file-path="$MODULE_DIR$/demo/assets/textures" path-in-package="textures" />
           </files-to-package>
         </packaging-android>
-        <packaging-ios enabled="true" use-generated-descriptor="false" custom-descriptor-path="$MODULE_DIR$/demo/src/Main-app.xml" package-file-name="starling-builder-client">
+        <packaging-ios enabled="true" use-generated-descriptor="false" custom-descriptor-path="$MODULE_DIR$/demo/src/starlingbuilder/demo/Main-app.xml" package-file-name="starling-builder-client">
           <files-to-package>
             <FilePathAndPathInPackage file-path="$MODULE_DIR$/demo/assets/textures" path-in-package="textures" />
           </files-to-package>
         </packaging-ios>
       </configuration>
-      <configuration name="demo_web" pure-as="true" main-class="Main" output-file="demo_web.swf" output-folder="$MODULE_DIR$/out/production/starling-builder-client" use-html-wrapper="true" wrapper-template-path="$MODULE_DIR$/demo/html-template">
-        <dependencies target-player="18.0">
+      <configuration name="demo_web" pure-as="true" main-class="starlingbuilder.demo.Main" output-file="demo_web.swf" output-folder="$MODULE_DIR$/out/production/starling-builder-client" use-html-wrapper="true" wrapper-template-path="$MODULE_DIR$/demo/html-template">
+        <dependencies target-player="19.0">
           <entries>
             <entry library-id="bed85d3a-f7ef-4a3d-bdf7-3cf336ed5b53">
               <dependency linkage="Merged" />

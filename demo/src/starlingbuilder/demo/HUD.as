@@ -5,7 +5,7 @@
  *  This program is free software. You can redistribute and/or modify it in
  *  accordance with the terms of the accompanying license agreement.
  */
-package {
+package starlingbuilder.demo {
     import starling.core.Starling;
     import starling.display.Button;
     import starling.display.Quad;

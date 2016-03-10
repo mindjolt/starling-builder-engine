@@ -5,7 +5,7 @@
  *  This program is free software. You can redistribute and/or modify it in
  *  accordance with the terms of the accompanying license agreement.
  */
-package {
+package starlingbuilder.demo {
     import feathers.controls.List;
     import feathers.controls.renderers.IListItemRenderer;
     import feathers.core.PopUpManager;
