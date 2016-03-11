@@ -17,11 +17,15 @@ package starlingbuilder.demo {
 
     public class MailPopup extends Sprite
     {
+        //auto bind variables
+        public var _list:List;
+        public var _exitButton:Button;
+
         public function MailPopup()
         {
             super();
 
-            var sprite:Sprite = UIBuilderDemo.uiBuilder.create(ParsedLayouts.mail_popup) as Sprite;
+            var sprite:Sprite = UIBuilderDemo.uiBuilder.create(ParsedLayouts.mail_popup, true, this) as Sprite;
             addChild(sprite);
 
             var listCollection:ListCollection = new ListCollection();
@@ -31,16 +35,13 @@ package starlingbuilder.demo {
                 listCollection.push(i);
             }
 
-            var list:List = sprite.getChildByName("obj1") as List;
-            list.itemRendererFactory = function():IListItemRenderer
+            _list.itemRendererFactory = function():IListItemRenderer
             {
                 return new MailItemRenderer();
             }
-            list.dataProvider = listCollection;
+            _list.dataProvider = listCollection;
 
-
-            var button:Button = sprite.getChildByName("generic_exit") as Button;
-            button.addEventListener(Event.TRIGGERED, onExit);
+            _exitButton.addEventListener(Event.TRIGGERED, onExit);
         }
 
         private function onExit(event:Event):void

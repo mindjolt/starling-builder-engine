@@ -14,7 +14,6 @@
             "customParams":{},
             "params":{
               "name":"score_element_background",
-              "scaleY":1,
               "x":17,
               "y":26.5
             }
@@ -247,7 +246,7 @@
         "cls":"starling.display.Sprite",
         "customParams":{},
         "params":{
-          "name":"top_container",
+          "name":"_topContainer",
           "pivotX":317.5,
           "pivotY":12,
           "x":317.5
@@ -370,7 +369,7 @@
         "cls":"starling.display.Sprite",
         "customParams":{},
         "params":{
-          "name":"bottom_container",
+          "name":"_bottomContainer",
           "pivotX":249.5,
           "pivotY":91,
           "x":292,
@@ -388,7 +387,7 @@
         "customParams":{},
         "params":{
           "height":78,
-          "name":"settings_button",
+          "name":"_settingsButton",
           "pivotX":72,
           "pivotY":74,
           "scaleX":1.08,

@@ -19,6 +19,11 @@ package starlingbuilder.demo {
     {
         private var _sprite:Sprite;
 
+        //auto bind variables
+        public var _topContainer:Sprite;
+        public var _bottomContainer:Sprite;
+        public var _settingsButton:Button;
+
         public function HUD()
         {
             super();
@@ -28,22 +33,18 @@ package starlingbuilder.demo {
             var quad:Quad = new Quad(stage.stageWidth, stage.stageHeight);
             addChild(quad);
 
-            _sprite = UIBuilderDemo.uiBuilder.create(ParsedLayouts.hud, false) as Sprite;
+            _sprite = UIBuilderDemo.uiBuilder.create(ParsedLayouts.hud, false, this) as Sprite;
             addChild(_sprite);
 
-            var topContainer:Sprite = _sprite.getChildByName("top_container") as Sprite;
-            var bottomContainer:Sprite = _sprite.getChildByName("bottom_container") as Sprite;
 
-            var settingsButton:Button = _sprite.getChildByName("settings_button") as Button;
+            _topContainer.x = stage.stageWidth * 0.5;
+            _topContainer.y = 0;
 
-            topContainer.x = stage.stageWidth * 0.5;
-            topContainer.y = 0;
+            _bottomContainer.x = stage.stageWidth * 0.5;
+            _bottomContainer.y = stage.stageHeight;
 
-            bottomContainer.x = stage.stageWidth * 0.5;
-            bottomContainer.y = stage.stageHeight;
-
-            settingsButton.x = stage.stageWidth + 4;
-            settingsButton.y = stage.stageHeight + 4;
+            _settingsButton.x = stage.stageWidth + 4;
+            _settingsButton.y = stage.stageHeight + 4;
 
             addEventListener(TouchEvent.TOUCH, onTouch);
         }

@@ -58,7 +58,7 @@ package starlingbuilder.engine
             _tweenBuilder = tweenBuilder;
         }
 
-        public function load(data:Object, trimLeadingSpace:Boolean = true):Object
+        public function load(data:Object, trimLeadingSpace:Boolean = true, binder:Object = null):Object
         {
             if (_dataFormatter)
                 data = _dataFormatter.read(data);
@@ -71,6 +71,9 @@ package starlingbuilder.engine
                 doTrimLeadingSpace(root as DisplayObjectContainer);
 
             localizeTexts(root, paramsDict);
+
+            if (binder)
+                bind(binder, paramsDict);
 
             return {object:root, params:paramsDict, data:data};
         }
@@ -340,9 +343,9 @@ package starlingbuilder.engine
             _dataFormatter = value;
         }
 
-        public function create(data:Object, trimLeadingSpace:Boolean = true):Object
+        public function create(data:Object, trimLeadingSpace:Boolean = true, binder:Object = null):Object
         {
-            return load(data, trimLeadingSpace).object;
+            return load(data, trimLeadingSpace, binder).object;
         }
 
         public function localizeTexts(root:DisplayObject, paramsDict:Dictionary):void
@@ -434,26 +437,32 @@ package starlingbuilder.engine
         }
 
         /**
-         *  Helper function to loop through all the top level display objects,
+         *  Helper function to loop through all the elements,
          *  If the name starts with "_", then bind to the object property with the same name.
          *
          *  NOTE: This function will ONLY work if your object._xxx is public variable.
-         *  Use it at your own risk since it breaks rules of data encapsulation
          *
          * @param container
          * @param object
          */
-        public static function bind(container:DisplayObjectContainer, object:Object):void
+        public static function bind(view:Object, paramsDict:Dictionary):void
         {
-            for (var i:int = 0; i < container.numChildren; ++i)
+            for (var obj:Object in paramsDict)
             {
-                var child:DisplayObject = container.getChildAt(i);
-                var name:String = child.name;
+                var name:String;
+                if ("name" in obj)
+                {
+                    name = obj["name"];
+                }
+                else
+                {
+                    name = null;
+                }
 
                 if (name && name.charAt(0) == "_")
                 {
-                    if (object.hasOwnProperty(name))
-                        object[name] = child;
+                    if (name in view)
+                        view[name] = obj;
                     else
                         throw new Error("Property name not defined: ", name);
                 }

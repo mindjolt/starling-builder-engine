@@ -37,11 +37,14 @@ package starlingbuilder.engine
          * params
          * A Dictionary of the mapping of every UIElement to its layout data
          *
+         * binder
+         * An optional object you want to bind properties with UI components with the same name, if name starts with "_"
+         *
          * data
          * the as3 plain object format of the layout
          *
          */
-        function load(data:Object, trimLeadingSpace:Boolean = true):Object
+        function load(data:Object, trimLeadingSpace:Boolean = true, binder:Object = null):Object
 
 
         /**
@@ -120,9 +123,10 @@ package starlingbuilder.engine
          *
          * @param data
          * @param trimLeadingSpace
+         * @binder An optional object you want to bind properties with UI components with the same name, if name starts with "_"
          * @return
          */
-        function create(data:Object, trimLeadingSpace:Boolean = true):Object
+        function create(data:Object, trimLeadingSpace:Boolean = true, binder:Object = null):Object
 
 
         /**

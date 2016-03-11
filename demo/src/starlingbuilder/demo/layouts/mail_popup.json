@@ -33,9 +33,8 @@
         ],
         "customParams":{},
         "params":{
-          "height":74,
-          "name":"generic_exit",
-          "scaleY":1.01,
+          "height":73,
+          "name":"_exitButton",
           "width":77,
           "x":559.5,
           "y":41
@@ -96,7 +95,7 @@
         "customParams":{},
         "params":{
           "height":515,
-          "name":"obj1",
+          "name":"_list",
           "width":534,
           "x":54.5,
           "y":122
