@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project name="starling-builder-extensions" default="all" basedir="../">
+    <property file="buildscript/build.properties"/>
+    <target name="all" depends="run"/>
+    <target name="swf">
+        <echo message="Building Main.swf"/>
+        <java jar="${mxmlc}" dir="." fork="true" failonerror="true">
+            <arg value="-load-config=${airsdk.config}"/>
+            <arg value="-debug=true"/>
+            <arg value="-swf-version=${swf-version}"/>
+            <arg value="-source-path+=src"/>
+            <arg value="-source-path+=../src"/>
+            <arg value="-library-path+=libs"/>
+            <arg value="-output+=deliverable/bin/Main.swf"/>
+            <arg value="src/starlingbuilder/demo/Main.as"/>
+        </java>
+        <copy file="src/starlingbuilder/demo/Main-app.xml" todir="deliverable/bin"/>
+    </target>
+    <target name="run" depends="swf">
+        <echo message="Running"/>
+        <exec executable="${adl}" dir="deliverable/bin">
+            <arg value="Main-app.xml"/>
+        </exec>
+    </target>
+    <target name="clean">
+        <delete dir="deliverable/bin"/>
+    </target>
+</project>
