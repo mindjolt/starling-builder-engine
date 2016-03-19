@@ -28,8 +28,6 @@ package starlingbuilder.engine
 
     public class UIBuilder implements IUIBuilder
     {
-        public static const VERSION:String = "1.0";
-
         private var _assetMediator:IAssetMediator;
 
         private var _dataFormatter:IDataFormatter;
@@ -110,7 +108,7 @@ package starlingbuilder.engine
             return obj;
         }
 
-        public function save(container:DisplayObjectContainer, paramsDict:Object, setting:Object = null):Object
+        public function save(container:DisplayObjectContainer, paramsDict:Object, version:String, setting:Object = null):Object
         {
             if (!_template)
             {
@@ -118,7 +116,7 @@ package starlingbuilder.engine
             }
 
             var data:Object = {};
-            data.version = VERSION;
+            data.version = version;
             data.layout = saveTree(container.getChildAt(0), paramsDict);
             data.setting = cloneObject(setting);
 
