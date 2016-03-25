@@ -16,6 +16,6 @@ package starlingbuilder.engine.localization
      */
     public interface ILocalizationHandler
     {
-        function localize(object:DisplayObject, text:String, paramsDict:Dictionary):void
+        function localize(object:DisplayObject, text:String, paramsDict:Dictionary, locale:String):void
     }
 }

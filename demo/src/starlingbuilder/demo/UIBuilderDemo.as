@@ -45,6 +45,7 @@ package starlingbuilder.demo {
 
             localization = new DefaultLocalization(JSON.parse(new EmbeddedAssets.strings), "en_US");
             uiBuilder = new UIBuilder(_assetMediator, false, null, localization, new DefaultTweenBuilder());
+            uiBuilder.localizationHandler = new LocalizationHandler();
 
             new MetalWorksMobileTheme(false);
 

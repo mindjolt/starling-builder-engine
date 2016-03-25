@@ -367,7 +367,7 @@ package starlingbuilder.engine
                 if (object.hasOwnProperty("label")) object["label"] = text;
 
                 if (_localizationHandler)
-                    _localizationHandler.localize(object, text, paramsDict);
+                    _localizationHandler.localize(object, text, paramsDict, _localization.locale);
             }
 
             var container:DisplayObjectContainer = object as DisplayObjectContainer;

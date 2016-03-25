@@ -15,7 +15,7 @@ package starlingbuilder.engine.localization
 
     public class DefaultLocalizationHandler implements ILocalizationHandler
     {
-        public function localize(object:DisplayObject, text:String, paramsDict:Dictionary):void
+        public function localize(object:DisplayObject, text:String, paramsDict:Dictionary, locale:String):void
         {
             //Assuming that TextField with auto size will always have pivot align to center
             if (object is TextField)

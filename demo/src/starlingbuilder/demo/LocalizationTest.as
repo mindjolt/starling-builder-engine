@@ -48,6 +48,7 @@ package starlingbuilder.demo
                 {label:"de_DE", triggered: onButton},
                 {label:"es_ES", triggered: onButton},
                 {label:"fr_FR", triggered: onButton},
+                {label:"cn_ZH", triggered: onButton},
             ]);
             buttonGroup.y = 300;
 
