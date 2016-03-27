@@ -391,6 +391,16 @@ package starlingbuilder.engine
             _tweenBuilder = value;
         }
 
+        public function get localization():ILocalization
+        {
+            return _localization;
+        }
+
+        public function set localization(value:ILocalization)
+        {
+            _localization = value;
+        }
+
         public function get localizationHandler():ILocalizationHandler
         {
             return _localizationHandler;

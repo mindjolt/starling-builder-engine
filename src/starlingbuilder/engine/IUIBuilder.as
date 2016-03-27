@@ -12,6 +12,8 @@ package starlingbuilder.engine
     import starling.display.DisplayObject;
     import starling.display.DisplayObjectContainer;
 
+    import starlingbuilder.engine.localization.ILocalization;
+
     import starlingbuilder.engine.localization.ILocalizationHandler;
 
     import starlingbuilder.engine.tween.ITweenBuilder;
@@ -140,6 +142,16 @@ package starlingbuilder.engine
          */
         function set tweenBuilder(value:ITweenBuilder):void
 
+        /**
+         * Localization getter
+         */
+        function get localization():ILocalization
+
+        /**
+         * Localization setter
+         * @param value
+         */
+        function set localization(value:ILocalization);
 
         /**
          * localizationHandler getter
