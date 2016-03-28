@@ -24,8 +24,6 @@ package starlingbuilder.demo
     import starling.events.TouchEvent;
     import starling.events.TouchPhase;
 
-    import starlingbuilder.engine.UIBuilder;
-
     public class LocalizationTest extends Sprite
     {
         private var _sprite:Sprite;
@@ -70,7 +68,7 @@ package starlingbuilder.demo
         {
             var locale:String = Button(event.target).label;
 
-            UIBuilderDemo.localization.locale = locale;
+            UIBuilderDemo.uiBuilder.localization.locale = locale;
             UIBuilderDemo.uiBuilder.localizeTexts(_sprite, _params);
         }
     }

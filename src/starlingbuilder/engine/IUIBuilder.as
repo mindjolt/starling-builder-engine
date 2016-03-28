@@ -151,7 +151,7 @@ package starlingbuilder.engine
          * Localization setter
          * @param value
          */
-        function set localization(value:ILocalization);
+        function set localization(value:ILocalization):void
 
         /**
          * localizationHandler getter

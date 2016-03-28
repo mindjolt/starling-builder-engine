@@ -396,7 +396,7 @@ package starlingbuilder.engine
             return _localization;
         }
 
-        public function set localization(value:ILocalization)
+        public function set localization(value:ILocalization):void
         {
             _localization = value;
         }

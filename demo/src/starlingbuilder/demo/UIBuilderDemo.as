@@ -16,13 +16,12 @@ package starlingbuilder.demo {
     import feathers.layout.VerticalLayout;
     import feathers.themes.MetalWorksMobileTheme;
 
-    import flash.utils.describeType;
-
     import starling.display.Sprite;
     import starling.filters.BlurFilter;
     import starling.utils.AssetManager;
 
     import starlingbuilder.engine.IUIBuilder;
+    import starlingbuilder.engine.LayoutLoader;
     import starlingbuilder.engine.UIBuilder;
     import starlingbuilder.engine.localization.DefaultLocalization;
     import starlingbuilder.engine.localization.ILocalization;
@@ -36,20 +35,19 @@ package starlingbuilder.demo {
         private var _assetMediator:starlingbuilder.demo.AssetMediator;
 
         public static var uiBuilder:IUIBuilder;
-        public static var localization:ILocalization;
 
         public function UIBuilderDemo()
         {
             _assetManager = new AssetManager();
             _assetMediator = new starlingbuilder.demo.AssetMediator(_assetManager);
 
-            localization = new DefaultLocalization(JSON.parse(new EmbeddedAssets.strings), "en_US");
+            var localization:ILocalization = new DefaultLocalization(JSON.parse(new EmbeddedAssets.strings), "en_US");
             uiBuilder = new UIBuilder(_assetMediator, false, null, localization, new DefaultTweenBuilder());
             uiBuilder.localizationHandler = new LocalizationHandler();
 
             new MetalWorksMobileTheme(false);
 
-            parseLayouts(starlingbuilder.demo.EmbeddedLayouts, ParsedLayouts);
+            var loader:LayoutLoader = new LayoutLoader(starlingbuilder.demo.EmbeddedLayouts, ParsedLayouts);
 
             _assetManager.enqueue(EmbeddedAssets);
             //_assetManager.enqueue(File.applicationDirectory.resolvePath("textures"));
@@ -135,18 +133,6 @@ package starlingbuilder.demo {
         {
             var test:AnchorLayoutTest = new AnchorLayoutTest();
             addChild(test);
-        }
-
-        private function parseLayouts(fromCls:Class, toCls:Class):void
-        {
-            var name:String;
-            var description:XML = describeType(fromCls);
-            var constants:XMLList = description..constant;
-            for each(var constant:XML in constants)
-            {
-                name = constant.@name;
-                toCls[name] = JSON.parse(new fromCls[name]());
-            }
         }
     }
 }
