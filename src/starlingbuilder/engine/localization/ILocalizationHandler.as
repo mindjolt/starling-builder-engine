@@ -12,10 +12,20 @@ package starlingbuilder.engine.localization
     import starling.display.DisplayObject;
 
     /**
-     *  This interface is designed for cases that localization need special treatment (e.g. change to a different font for some languages)
+     *  ILocalizationHandler is designed for cases that localization needs special treatment (e.g. change to a different font for some languages)
+     *  Once passed into UIBuilder, the callback will be fired automatically when the localization is happening.
+     *
+     *  @see starlingbuilder.engine.UIBuilder
      */
     public interface ILocalizationHandler
     {
+        /**
+         * Callback function when a display object is localized
+         * @param object display object
+         * @param text text of the display object
+         * @param paramsDict params dictionary of meta data
+         * @param locale the current locale
+         */
         function localize(object:DisplayObject, text:String, paramsDict:Dictionary, locale:String):void
     }
 }

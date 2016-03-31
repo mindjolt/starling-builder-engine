@@ -18,38 +18,41 @@ package starlingbuilder.engine
 
     import starlingbuilder.engine.tween.ITweenBuilder;
 
+    /**
+     * IUIBuilder is the main interface of the Starling Builder engine API
+     *
+     * @see UIBuilder
+     */
     public interface IUIBuilder
     {
         /**
+         * Load from layout data, create display objects and the associated meta data
          *
          * @param data
-         * layout file data
+         * layout data
          *
          * @param trimLeadingSpace
          * whether to trim the leading space on the top level elements
-         * set to True if load from the game, set to False if load from the editor
+         * set to true if loading a popup, set to false if loading a hud
          *
-         * @return
-         * An object with
-         * {container:Sprite, params:Dictionary, data:data};
-         *
-         * object
-         * the sprite to create,
-         *
-         * params
-         * A Dictionary of the mapping of every UIElement to its layout data
-         *
-         * binder
+         * @param binder
          * An optional object you want to bind properties with UI components with the same name, if name starts with "_"
          *
-         * data
-         * the as3 plain object format of the layout
+         * @return
+         * An object with {object:Sprite, params:Dictionary, data:data};
+         *
+         * <p>object: the sprite to create</p>
+         * <p>params: A Dictionary of the mapping of every UIElement to its layout data</p>
+         * <p>data: the as3 plain object format of the layout</p>
+         *
+         * @see #create()
          *
          */
         function load(data:Object, trimLeadingSpace:Boolean = true, binder:Object = null):Object
 
 
         /**
+         * Save display object container to layout data
          *
          * @param container
          * Display object container needed to export to layout
@@ -69,6 +72,7 @@ package starlingbuilder.engine
 
 
         /**
+         * Create UI element from data
          *
          * @param data
          * data in as3 plain object format
@@ -80,6 +84,9 @@ package starlingbuilder.engine
 
         
         /**
+         * @private
+         *
+         * Whether param is a container
          *
          * @param param of the display object
          * @return if the object is a container recognized by ui editor
@@ -88,31 +95,35 @@ package starlingbuilder.engine
 
 
         /**
+         * @private
          *
-         * @param obj
-         * @param paramsDict
+         * Copy a display object to layout data
+         *
+         * @param obj display object copy from
+         * @param paramsDict params dictionary of meta data
          * @return
          */
         function copy(obj:DisplayObject, paramsDict:Object):String
 
 
         /**
+         * @private
          *
-         * @param string
-         * @return
+         * Paste layout data to display object
+         * @param string layout data
+         * @return display object
          */
         function paste(string:String):Object
 
 
         /**
-         *
-         * @param param of the display object
-         * @param name file name without extension
+         * @private
          */
         function setExternalSource(param:Object, name:String):void
 
 
         /**
+         * Localize texts in display object
          *
          * @param root of the DisplayObject needs to be localize
          * @param A Dictionary of the mapping of every UIElement to its layout data
@@ -121,59 +132,59 @@ package starlingbuilder.engine
 
 
         /**
+         * Create display objects from layout.
          * Short cut for load().object
          *
-         * @param data
-         * @param trimLeadingSpace
-         * @binder An optional object you want to bind properties with UI components with the same name, if name starts with "_"
-         * @return
+         * @see #load()
          */
         function create(data:Object, trimLeadingSpace:Boolean = true, binder:Object = null):Object
 
 
         /**
-         * Tween Builder getter
+         * Tween builder property
          */
         function get tweenBuilder():ITweenBuilder
 
 
         /**
-         * Tween Builder setter
+         * @private
          */
         function set tweenBuilder(value:ITweenBuilder):void
 
         /**
-         * Localization getter
+         * Localization property
          */
         function get localization():ILocalization
 
         /**
-         * Localization setter
-         * @param value
+         * @private
          */
         function set localization(value:ILocalization):void
 
         /**
-         * localizationHandler getter
+         * Localization handler property
          */
         function get localizationHandler():ILocalizationHandler
 
 
         /**
-         * localizationHandler setter
+         * @private
          */
         function set localizationHandler(value:ILocalizationHandler):void
 
 
         /**
-         * prettyData getter
+         * @private
+         *
+         * Whether to save data as pretty format
+         *
+         * @default true
          */
         function get prettyData():Boolean
 
 
         /**
-         * prettyData setter
-         * @param value
+         * @private
          */
         function set prettyData(value:Boolean):void
         

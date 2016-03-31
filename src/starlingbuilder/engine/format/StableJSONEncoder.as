@@ -35,6 +35,12 @@ package starlingbuilder.engine.format
 
     import flash.utils.describeType;
 
+    /**
+     * A JSON encoder that can generate stable output from the same as3 object.
+     * This class is modified from the JSON library of as3corelib.
+     *
+     * @see http://github.com/mikechambers/as3corelib/blob/master/src/com/adobe/serialization/json/JSONEncoder.as
+     */
     public class StableJSONEncoder
     {
 
@@ -44,6 +50,8 @@ package starlingbuilder.engine.format
         private var space:int;
 
         /**
+         * @private
+         *
          * Creates a new JSONEncoder.
          *
          * @param o The object to encode as a JSON string
@@ -60,6 +68,8 @@ package starlingbuilder.engine.format
         }
 
         /**
+         * @private
+         *
          * Gets the JSON string from the encoder.
          *
          * @return The JSON string representation of the object
@@ -373,6 +383,12 @@ package starlingbuilder.engine.format
             }
         }
 
+        /**
+         * Stringify method
+         * @param data plain as3 object
+         * @param space space for indention
+         * @return output as string
+         */
         public static function stringify(data:Object, space:int = 2):String
         {
             return new StableJSONEncoder( data, space ).getString();

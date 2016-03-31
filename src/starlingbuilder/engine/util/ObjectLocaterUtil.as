@@ -7,6 +7,9 @@
  */
 package starlingbuilder.engine.util
 {
+    /**
+     * @private
+     */
     public class ObjectLocaterUtil
     {
         public function ObjectLocaterUtil()

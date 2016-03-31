@@ -7,13 +7,14 @@
  */
 package starlingbuilder.engine.util
 {
-
-
     import flash.geom.Point;
     import flash.geom.Rectangle;
 
     import starling.display.DisplayObject;
 
+    /**
+     * @private
+     */
     public class DisplayObjectUtil
     {
         public static const LEFT:String = "left";

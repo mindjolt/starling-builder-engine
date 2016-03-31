@@ -11,12 +11,33 @@ package starlingbuilder.engine.util
     import flash.geom.Point;
     import flash.system.Capabilities;
 
+    /**
+     * Helper class to support multiple resolution
+     *
+     * <p>Example usage:</p>
+     *
+     * <listing version="3.0">
+     *     var stageUtil:StageUtil = new StageUtil(stage);
+     *     var size:Point = stageUtil.getScaledStageSize();
+     *     var starling:Starling = new Starling(Game, stage, new Rectangle(0, 0, stageUtil.stageWidth, stageUtil.stageHeight));
+     *     starling.stage.stageWidth = size.x;
+     *     starling.stage.stageHeight = size.y;</listing>
+     *
+     * @see http://wiki.starling-framework.org/builder/multiple_resolution Multiple resolution support
+     * @see "Starling Builder demo project"
+     */
     public class StageUtil
     {
         private var _stage:Stage;
         private var _designStageWidth:int;
         private var _designStageHeight:int;
 
+        /**
+         * Constructor
+         * @param stage flash stage
+         * @param designStageWidth design stage width of the project
+         * @param designStageHeight design stage height of the project
+         */
         public function StageUtil(stage:Stage, designStageWidth:int = 640, designStageHeight:int = 960)
         {
             _stage = stage;
@@ -25,6 +46,9 @@ package starlingbuilder.engine.util
             _designStageHeight = designStageHeight;
         }
 
+        /**
+         * Return stage width of the device
+         */
         public function get stageWidth():int
         {
             var iOS:Boolean = isiOS();
@@ -40,6 +64,9 @@ package starlingbuilder.engine.util
             }
         }
 
+        /**
+         * Return stage height of the device
+         */
         public function get stageHeight():int
         {
             var iOS:Boolean = isiOS();
@@ -56,10 +83,11 @@ package starlingbuilder.engine.util
         }
 
         /**
-         *  Algorithm supporting multiple resolutions
+         * Calculate the scaled starling stage size
          *
-         *  http://wiki.starling-framework.org/builder/multiple_resolution
-         *
+         * @param stageWidth stageWidth of flash stage, if not specified then use this.stageWidth
+         * @param stageHeight stageHeight of flash stage, if not specified then use this.stageHeight
+         * @return the scaled starling stage
          */
         public function getScaledStageSize(stageWidth:int = 0, stageHeight:int = 0):Point
         {
@@ -107,11 +135,17 @@ package starlingbuilder.engine.util
             return new Point(Math.round(width), Math.round(height));
         }
 
+        /**
+         * @private
+         */
         public static function isAndroid():Boolean
         {
             return Capabilities.manufacturer.indexOf("Android") != -1;
         }
 
+        /**
+         * @private
+         */
         public static function isiOS():Boolean
         {
             return Capabilities.manufacturer.indexOf("iOS") != -1;

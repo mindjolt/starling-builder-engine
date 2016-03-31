@@ -7,18 +7,30 @@
  */
 package starlingbuilder.engine.localization
 {
+    /**
+     * Default implementation of ILocalization
+     *
+     * @see ILocalization
+     */
     public class DefaultLocalization implements ILocalization
     {
         private var _data:Object;
-
         private var _locale:String;
 
+        /**
+         * Constructor
+         * @param data localization data
+         * @param locale current locale
+         */
         public function DefaultLocalization(data:Object, locale:String = null):void
         {
             _data = data;
             _locale = locale;
         }
 
+        /**
+         * @inheritDoc
+         */
         public function getLocalizedText(key:String):String
         {
             if (_locale && _data.hasOwnProperty(key) && _data[key].hasOwnProperty(_locale))
@@ -31,6 +43,9 @@ package starlingbuilder.engine.localization
             }
         }
 
+        /**
+         * @inheritDoc
+         */
         public function getLocales():Array
         {
             var locales:Array = [];
@@ -52,6 +67,9 @@ package starlingbuilder.engine.localization
 
         private var _keys:Array;
 
+        /**
+         * @inheritDoc
+         */
         public function getKeys():Array
         {
             if (!_keys)
@@ -69,11 +87,17 @@ package starlingbuilder.engine.localization
             return _keys;
         }
 
+        /**
+         * @inheritDoc
+         */
         public function get locale():String
         {
             return _locale;
         }
 
+        /**
+         * @inheritDoc
+         */
         public function set locale(value:String):void
         {
             _locale = value;

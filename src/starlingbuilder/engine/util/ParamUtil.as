@@ -12,6 +12,9 @@ package starlingbuilder.engine.util
     import flash.utils.getDefinitionByName;
     import flash.utils.getQualifiedClassName;
 
+    /**
+     * @private
+     */
     public class ParamUtil
     {
         public function ParamUtil()

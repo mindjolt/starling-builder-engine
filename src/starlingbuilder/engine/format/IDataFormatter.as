@@ -7,6 +7,9 @@
  */
 package starlingbuilder.engine.format
 {
+    /**
+     * @private
+     */
     public interface IDataFormatter
     {
         function read(data:Object):Object;

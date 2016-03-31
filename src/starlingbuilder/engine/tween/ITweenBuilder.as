@@ -12,6 +12,30 @@ package starlingbuilder.engine.tween
     import starling.display.DisplayObject;
     import starling.display.DisplayObjectContainer;
 
+    /**
+     * ITweenBuilder defines interface of playing tween set by the editor.
+     *
+     * <p>
+     * You need to manually call start/stop in your project when you want to start/stop a tween.
+     * <br>
+     * NOTE: The stop method should ALWAYS be called with the start method to avoid memory leak when the components are disposed.
+     * <br>
+     * The following example shows how to start and stop a tween:
+     * </p>
+     *
+     * <listing version="3.0">
+     *     var data:Object = uiBuilder.create(data);
+     *     var sprite:Sprite = data.object as Sprite;
+     *     var paramsDict:Dictionary = data.params;
+     *     <br>
+     *     uiBuilder.tweenBuilder.startTween(sprite, paramsDict);
+     *     <br>
+     *     ...
+     *     <br>
+     *     uiBuilder.tweenBuilder.stopTween(sprite);</listing>
+     *
+     * @see starlingbuilder.engine.UIBuilder
+     */
     public interface ITweenBuilder
     {
         /**

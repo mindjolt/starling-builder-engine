@@ -7,6 +7,9 @@
  */
 package starlingbuilder.engine.util
 {
+    /**
+     * @private
+     */
     public class SaveUtil
     {
         public static function willSave(object:Object, param:Object, item:Object):Boolean

@@ -14,6 +14,9 @@ package starlingbuilder.engine
 
     import starling.textures.Texture;
 
+    /**
+     * @private
+     */
     public class UIElementFactory
     {
         protected var _assetMediator:IAssetMediator;

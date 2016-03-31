@@ -15,15 +15,33 @@ package starlingbuilder.engine.tween
 
     import starlingbuilder.engine.UIBuilder;
 
+    /**
+     * Default implementation of ITweenBuilder
+     *
+     * <p>Example data1:</p>
+     * <p>{"time":1, "properties":{"scaleX":0.9, "scaleY":0.9, "repeatCount":0, "reverse":true}}</p>
+     * <p>Example data2:</p>
+     * <p>[{"properties":{"repeatCount":0,"scaleY":0.9,"reverse":true,"scaleX":0.9},"time":1},{"properties":{"repeatCount":0,"alpha":0,"reverse":true},"time":0.5}]</p>
+     * <p>Example data3:</p>
+     * <p>{"time":0.5,"properties":{"repeatCount":0,"reverse":true},"delta":{"y":-10}}</p>
+     *
+     * @see ITweenBuilder
+     */
     public class DefaultTweenBuilder implements ITweenBuilder
     {
         private var _saveData:Dictionary;
 
+        /**
+         * Constructor
+         */
         public function DefaultTweenBuilder()
         {
             _saveData = new Dictionary();
         }
 
+        /**
+         * @inheritDoc
+         */
         public function start(root:DisplayObject, paramsDict:Dictionary, names:Array = null):void
         {
             stop(root, paramsDict, names);
@@ -64,7 +82,7 @@ package starlingbuilder.engine.tween
             }
             else
             {
-                for (var obj:DisplayObject in paramsDict)
+                for (var obj:Object in paramsDict)
                 {
                     if (paramsDict[obj].hasOwnProperty("tweenData"))
                         array.push(obj);
@@ -74,16 +92,6 @@ package starlingbuilder.engine.tween
             return array;
         }
 
-        /*
-        example data1:
-        {"time":1, "properties":{"scaleX":0.9, "scaleY":0.9, "repeatCount":0, "reverse":true}}
-
-        example data2:
-        [{"properties":{"repeatCount":0,"scaleY":0.9,"reverse":true,"scaleX":0.9},"time":1},{"properties":{"repeatCount":0,"alpha":0,"reverse":true},"time":0.5}]
-
-        example data3:
-        {"time":0.5,"properties":{"repeatCount":0,"reverse":true},"delta":{"y":-10}}
-        */
         private function createTweenFrom(obj:DisplayObject, data:Object):void
         {
             if (!data.hasOwnProperty("time"))
@@ -113,6 +121,9 @@ package starlingbuilder.engine.tween
             _saveData[obj].push({tween:tween, init:initData});
         }
 
+        /**
+         * @inheritDoc
+         */
         public function stop(root:DisplayObject, paramsDict:Dictionary = null, names:Array = null):void
         {
             if (paramsDict == null || names == null)
@@ -204,10 +215,10 @@ package starlingbuilder.engine.tween
         {
             var container:DisplayObjectContainer = root as DisplayObjectContainer;
 
-            for (var obj:DisplayObject in _saveData)
+            for (var obj:Object in _saveData)
             {
-                if (root === obj || container && container.contains(obj))
-                    stopTween(obj);
+                if (root === obj || container && container.contains(obj as DisplayObject))
+                    stopTween(obj as DisplayObject);
             }
         }
 

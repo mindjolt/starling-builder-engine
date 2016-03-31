@@ -14,13 +14,24 @@ package starlingbuilder.demo
 
     import starlingbuilder.engine.localization.DefaultLocalizationHandler;
 
+    /**
+     * Default implementation of ILocalizationHandler
+     *
+     * @see ILocalizationHandler
+     */
     public class LocalizationHandler extends DefaultLocalizationHandler
     {
+        /**
+         * Constructor
+         */
         public function LocalizationHandler()
         {
             super();
         }
 
+        /**
+         * @inheritDoc
+         */
         override public function localize(object:DisplayObject, text:String, paramsDict:Dictionary, locale:String):void
         {
             var textField:TextField = object as TextField;

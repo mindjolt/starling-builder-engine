@@ -9,6 +9,37 @@ package starlingbuilder.engine
 {
     import flash.utils.describeType;
 
+    /**
+     * Helper class to load layouts
+     *
+     * <p>This class provide an easy and efficient way to load layout files from embedded data, parse the data and cached it into memory.
+     * The following example load and parse the layout data from EmbeddedLayout class to ParsedLayout class:
+     * </p>
+     *
+     * <listing version="3.0">
+     * public class EmbeddedLayout
+     * {
+     *     [Embed(source="layouts/connect_popup.json", mimeType="application/octet-stream")]
+     *     public static const connect_popup:Class;
+     *     <br>
+     *     [Embed(source="layouts/mail_popup.json", mimeType="application/octet-stream")]
+     *     public static const mail_popup:Class;
+     * }
+     * <br>
+     * public class ParsedLayout
+     * {
+     *     public static var connect_popup:Object;
+     *     <br>
+     *     public static var mail_popup:Object;
+     * }
+     * <br>
+     * var loader:LayoutLoader = new LayoutLoader(EmbeddedLayout, ParsedLayout);
+     * <br>
+     * var sprite:Sprite = uiBuilder.create(ParsedLayout.connect_popup) as Sprite;</listing>
+     *
+     * @see "Starling Builder demo project"
+     *
+     */
     public class LayoutLoader
     {
         private var _embeddedCls:Class;
@@ -16,10 +47,10 @@ package starlingbuilder.engine
         private var _preload:Boolean;
 
         /**
-         * Helper class to load layouts
+         * Constructor
          * @param embeddedCls class with embedded layout
          * @param layoutCls class with parsed layout
-         * @param preload whether to preload it. If true, calling load() is not necessary
+         * @param preload whether to preload it. If set to true, calling load() is not necessary
          */
         public function LayoutLoader(embeddedCls:Class, layoutCls:Class, preload:Boolean = true)
         {
@@ -34,7 +65,7 @@ package starlingbuilder.engine
         /**
          * Load a layout with name, only need to use it when preload = false
          * @param name layout name
-         * @return
+         * @return parsed as3 object
          */
         public function load(name:String):Object
         {

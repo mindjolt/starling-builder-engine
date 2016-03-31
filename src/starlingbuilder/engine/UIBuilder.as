@@ -26,6 +26,53 @@ package starlingbuilder.engine
     import starling.display.DisplayObjectContainer;
     import starling.textures.Texture;
 
+    /**
+     * UIBuilder implement IUIBuilder interface. It's the main class of Starling Builder API
+     *
+     * <p>Exmaple of creating a UIBuilder</p>
+     *
+     * <listing version="3.0">
+     *     var assetManager:AssetManager = new AssetManager();
+     *     var assetMediator:AssetMediator = new AssetMediator(assetManager);
+     *     var uiBuilder:UIBuilder = new UIBuilder(assetMediator);</listing>
+     *
+     *
+     * <p>A simple example to create display objects from layout</p>
+     *
+     * <listing version="3.0">
+     *     var sprite:Sprite = uiBuilder.create(layoutData) as Sprite;
+     *     addChild(sprite);</listing>
+     *
+     * <p>A more elaborate way to create UI element inside a class, and bind the public underscore property automatically</p>
+     *
+     * <listing version="3.0">
+     *     public class MailPopup extends Sprite
+     *     {
+     *         //auto bind variables
+     *         public var _list:List;
+     *         public var _exitButton:Button;
+     *         <br>
+     *         public function MailPopup()
+     *         {
+     *             super();
+     *             <br>
+     *             var sprite:Sprite = uiBuilder.create(ParsedLayouts.mail_popup, true, this) as Sprite;
+     *             addChild(sprite);
+     *             <br>
+     *             _exitButton.addEventListener(Event.TRIGGERED, onExit);
+     *         }
+     *         <br>
+     *         private function onExit(event:Event):void
+     *         {
+     *             PopUpManager.removePopUp(this, true);
+     *         }
+     *     }</listing>
+     *
+     * @see http://wiki.starling-framework.org/builder/start Starling Builder wiki page
+     * @see "Starling Builder demo project"
+     * @see "Starling Builder scaffold project"
+     *
+     */
     public class UIBuilder implements IUIBuilder
     {
         private var _assetMediator:IAssetMediator;
@@ -44,6 +91,14 @@ package starlingbuilder.engine
 
         private var _tweenBuilder:ITweenBuilder;
 
+        /**
+         * Constructor
+         * @param assetMediator asset mediator
+         * @param forEditor whether it's used for the editor
+         * @param template template for saving layout
+         * @param localization optional localization instance
+         * @param tweenBuilder optional tween builder instance
+         */
         public function UIBuilder(assetMediator:IAssetMediator, forEditor:Boolean = false, template:Object = null, localization:ILocalization = null, tweenBuilder:ITweenBuilder = null)
         {
             _assetMediator = assetMediator;
@@ -56,6 +111,10 @@ package starlingbuilder.engine
             _tweenBuilder = tweenBuilder;
         }
 
+        /**
+         * @copy IUIBuilder#load()
+         * @see #create()
+         */
         public function load(data:Object, trimLeadingSpace:Boolean = true, binder:Object = null):Object
         {
             if (_dataFormatter)
@@ -108,6 +167,9 @@ package starlingbuilder.engine
             return obj;
         }
 
+        /**
+         * @inheritDoc
+         */
         public function save(container:DisplayObjectContainer, paramsDict:Object, version:String, setting:Object = null):Object
         {
             if (!_template)
@@ -128,6 +190,9 @@ package starlingbuilder.engine
             return data;
         }
 
+        /**
+         * @private
+         */
         public function isContainer(param:Object):Boolean
         {
             if (param && ParamUtil.isContainer(_template, param.cls) && !param.customParams.source)
@@ -140,6 +205,9 @@ package starlingbuilder.engine
             }
         }
 
+        /**
+         * @private
+         */
         public function copy(obj:DisplayObject, paramsDict:Object):String
         {
             if (!_template)
@@ -150,16 +218,25 @@ package starlingbuilder.engine
             return StableJSONEncoder.stringify(saveTree(obj, paramsDict));
         }
 
+        /**
+         * @private
+         */
         public function paste(string:String):Object
         {
             return {layout:JSON.parse(string)};
         }
 
+        /**
+         * @private
+         */
         public function setExternalSource(param:Object, name:String):void
         {
             param.customParams.source = name;
         }
 
+        /**
+         * @private
+         */
         private function isExternalSource(param:Object):Boolean
         {
             if (param && param.customParams && param.customParams.source)
@@ -318,6 +395,9 @@ package starlingbuilder.engine
             }
         }
 
+        /**
+         * @private
+         */
         public static function cloneObject(object:Object):Object
         {
             var clone:ByteArray = new ByteArray();
@@ -326,26 +406,42 @@ package starlingbuilder.engine
             return(clone.readObject());
         }
 
+        /**
+         * @inheritDoc
+         */
         public function createUIElement(data:Object):Object
         {
             return {object:_factory.create(data), params:data};
         }
 
+        /**
+         * @private
+         */
         public function get dataFormatter():IDataFormatter
         {
             return _dataFormatter;
         }
 
+        /**
+         * @private
+         */
         public function set dataFormatter(value:IDataFormatter):void
         {
             _dataFormatter = value;
         }
 
+        /**
+         * @copy IUIBuilder#create()
+         * @see #load()
+         */
         public function create(data:Object, trimLeadingSpace:Boolean = true, binder:Object = null):Object
         {
             return load(data, trimLeadingSpace, binder).object;
         }
 
+        /**
+         * @inheritDoc
+         */
         public function localizeTexts(root:DisplayObject, paramsDict:Dictionary):void
         {
             if (_localization && _localization.locale)
@@ -381,41 +477,65 @@ package starlingbuilder.engine
             }
         }
 
+        /**
+         * @inheritDoc
+         */
         public function get tweenBuilder():ITweenBuilder
         {
             return _tweenBuilder;
         }
 
+        /**
+         * @private
+         */
         public function set tweenBuilder(value:ITweenBuilder):void
         {
             _tweenBuilder = value;
         }
 
+        /**
+         * @inheritDoc
+         */
         public function get localization():ILocalization
         {
             return _localization;
         }
 
+        /**
+         * @private
+         */
         public function set localization(value:ILocalization):void
         {
             _localization = value;
         }
 
+        /**
+         * @inheritDoc
+         */
         public function get localizationHandler():ILocalizationHandler
         {
             return _localizationHandler;
         }
 
+        /**
+         * @private
+         */
         public function set localizationHandler(value:ILocalizationHandler):void
         {
             _localizationHandler = value;
         }
 
+        /**
+         * @private
+         */
         public function get prettyData():Boolean
         {
             return _dataFormatter.prettyData;
         }
 
+        /**
+         * @private
+         */
         public function set prettyData(value:Boolean):void
         {
             _dataFormatter.prettyData = value;
@@ -423,8 +543,8 @@ package starlingbuilder.engine
 
         /**
          *  Helper function to find ui element
-         * @param container
-         * @param path can be separated by dot (e.g. bottom_container.layout.button1)
+         * @param container root display object container you want to find
+         * @param property path separated by dots (e.g. bottom_container.layout.button1)
          * @return
          */
         public static function find(container:DisplayObjectContainer, path:String):DisplayObject
@@ -445,13 +565,13 @@ package starlingbuilder.engine
         }
 
         /**
-         *  Helper function to loop through all the elements,
-         *  If the name starts with "_", then bind to the object property with the same name.
+         *  Helper function to bind UI elements to properties.
+         *  It loops through all the UI elements, if the name starts with "_", then bind to the object property with the same name.
          *
-         *  NOTE: This function will ONLY work if your object._xxx is public variable.
+         *  <p>NOTE: This function will ONLY work if your object._xxx is public variable.</p>
          *
-         * @param container
-         * @param object
+         * @param view object you want to bind to
+         * @param paramsDict params dictionary of meta data
          */
         public static function bind(view:Object, paramsDict:Dictionary):void
         {

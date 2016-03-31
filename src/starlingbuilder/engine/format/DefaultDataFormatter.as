@@ -7,6 +7,9 @@
  */
 package starlingbuilder.engine.format
 {
+    /**
+     * @private
+     */
     public class DefaultDataFormatter implements IDataFormatter
     {
         private var _prettyData:Boolean = true;
