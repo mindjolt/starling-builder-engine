@@ -114,7 +114,7 @@ package starlingbuilder.engine.tween
 
             setDelta(obj, data.delta, properties);
 
-            var tween:Tween = Starling.current.juggler.tween(obj, data.time, properties) as Tween;
+            var tween:Object = Starling.current.juggler.tween(obj, data.time, properties);
 
             if (!_saveData[obj]) _saveData[obj] = [];
 
@@ -152,8 +152,16 @@ package starlingbuilder.engine.tween
                     var initData:Object = data.init;
                     recoverInitData(obj, initData);
 
-                    var tween:Tween = data.tween;
-                    Starling.current.juggler.remove(tween);
+                    var tween:Object = data.tween;
+
+                    if (tween is Tween) //Starling 1.x
+                    {
+                        Starling.current.juggler.remove(tween as Tween);
+                    }
+                    else //Starling 2.x
+                    {
+                        Starling.current.juggler["removeByID"](tween as uint);
+                    }
                 }
             }
 
