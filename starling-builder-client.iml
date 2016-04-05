@@ -21,6 +21,7 @@
         <packaging-ios enabled="true" use-generated-descriptor="false" custom-descriptor-path="$MODULE_DIR$/demo/src/starlingbuilder/demo/Main-app.xml" package-file-name="starling-builder-client">
           <files-to-package>
             <FilePathAndPathInPackage file-path="$MODULE_DIR$/demo/assets/textures" path-in-package="textures" />
+            <FilePathAndPathInPackage file-path="$MODULE_DIR$/demo/system" path-in-package="." />
           </files-to-package>
         </packaging-ios>
       </configuration>
@@ -50,7 +51,11 @@
         <compiler-options />
         <packaging-air-desktop />
         <packaging-android enabled="true" use-generated-descriptor="false" custom-descriptor-path="$MODULE_DIR$/scaffold/src/Main-app.xml" package-file-name="scaffold" />
-        <packaging-ios enabled="true" use-generated-descriptor="false" custom-descriptor-path="$MODULE_DIR$/scaffold/src/Main-app.xml" package-file-name="scaffold" />
+        <packaging-ios enabled="true" use-generated-descriptor="false" custom-descriptor-path="$MODULE_DIR$/scaffold/src/Main-app.xml" package-file-name="scaffold">
+          <files-to-package>
+            <FilePathAndPathInPackage file-path="$MODULE_DIR$/scaffold/system" path-in-package="." />
+          </files-to-package>
+        </packaging-ios>
       </configuration>
     </configurations>
     <compiler-options />
