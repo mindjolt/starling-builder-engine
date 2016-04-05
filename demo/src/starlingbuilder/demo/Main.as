@@ -27,6 +27,13 @@ package starlingbuilder.demo {
 
         private function _start(e:Event):void
         {
+            _starling.stage3D.removeEventListener(Event.CONTEXT3D_CREATE, _start);
+
+            var stageUtil:StageUtil = new StageUtil(stage);
+            var size:Point = stageUtil.getScaledStageSize(stage.stageWidth, stage.stageHeight);
+            _starling.viewPort = new Rectangle(0, 0, stage.stageWidth, stage.stageHeight);
+            _starling.stage.stageWidth = size.x;
+            _starling.stage.stageHeight = size.y;
             _starling.start();
         }
 
@@ -40,12 +47,7 @@ package starlingbuilder.demo {
         {
             Starling.handleLostContext = true;
 
-            var stageUtil:StageUtil = new StageUtil(stage);
-            var size:Point = stageUtil.getScaledStageSize();
-
-            _starling = new Starling(UIBuilderDemo, stage, new Rectangle(0, 0, stageUtil.stageWidth, stageUtil.stageHeight));
-            _starling.stage.stageWidth = size.x;
-            _starling.stage.stageHeight = size.y;
+            _starling = new Starling(UIBuilderDemo, stage);
             _starling.showStats = true ;
             _starling.stage3D.addEventListener(Event.CONTEXT3D_CREATE, _start);
         }
