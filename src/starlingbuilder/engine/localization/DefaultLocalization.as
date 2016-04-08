@@ -11,6 +11,7 @@ package starlingbuilder.engine.localization
      * Default implementation of ILocalization
      *
      * @see ILocalization
+     * @see http://wiki.starling-framework.org/builder/localization Using Localization
      */
     public class DefaultLocalization implements ILocalization
     {

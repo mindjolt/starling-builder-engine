@@ -12,7 +12,7 @@ package starlingbuilder.engine.localization
     import starling.display.DisplayObject;
 
     /**
-     *  ILocalizationHandler is designed for cases that localization needs special treatment (e.g. change to a different font for some languages)
+     *  Interface for cases that localization needs special treatment (e.g. change to a different font for some languages)
      *  Once passed into UIBuilder, the callback will be fired automatically when the localization is happening.
      *
      *  @see starlingbuilder.engine.UIBuilder

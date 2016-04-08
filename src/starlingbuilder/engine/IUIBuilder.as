@@ -19,7 +19,7 @@ package starlingbuilder.engine
     import starlingbuilder.engine.tween.ITweenBuilder;
 
     /**
-     * IUIBuilder is the main interface of the Starling Builder engine API
+     * Main interface of the Starling Builder engine API
      *
      * @see UIBuilder
      */

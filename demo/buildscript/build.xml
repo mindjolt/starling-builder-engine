@@ -22,14 +22,14 @@
             <arg value="Main-app.xml"/>
         </exec>
     </target>
-    <target name="doc">
+    <target name="api">
     	<java jar="${asdoc}" dir="." fork="true" failonerror="true">
 			<arg value="+flexlib=${airsdk.framework}"/>
     		<arg value="-swf-version=${swf-version}"/>
     		<arg value="-source-path+=../src"/>
     		<arg value="-doc-sources+=../src"/>
     		<arg value="-library-path+=libs"/>
-			<arg value="-output=../documentation"/>			
+			<arg value="-output=../api"/>			
 			<!-- these two arguments are needed after switching to the AIR SDK
 				with ASC 2.0 to stop weird errors -->
 			<arg value="-theme="/>

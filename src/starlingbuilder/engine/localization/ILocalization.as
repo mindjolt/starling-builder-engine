@@ -8,7 +8,7 @@
 package starlingbuilder.engine.localization
 {
     /**
-     * ILocalization defines the interface of localizing display objects. It's used in both the editor and the project.
+     * Interface of localizing display objects. It's used in both the editor and the project.
      * Once passed into UIBuilder, the localization will work automatically when UIBuilder.load() is called
      *
      * @see starlingbuilder.engine.UIBuilder

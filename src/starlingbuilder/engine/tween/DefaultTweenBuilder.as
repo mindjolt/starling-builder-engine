@@ -26,6 +26,7 @@ package starlingbuilder.engine.tween
      * <p>{"time":0.5,"properties":{"repeatCount":0,"reverse":true},"delta":{"y":-10}}</p>
      *
      * @see ITweenBuilder
+     * @see http://wiki.starling-framework.org/builder/tween Using tween
      */
     public class DefaultTweenBuilder implements ITweenBuilder
     {

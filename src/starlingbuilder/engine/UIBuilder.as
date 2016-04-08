@@ -27,7 +27,7 @@ package starlingbuilder.engine
     import starling.textures.Texture;
 
     /**
-     * UIBuilder implement IUIBuilder interface. It's the main class of Starling Builder API
+     * Main class of Starling Builder engine API
      *
      * <p>Exmaple of creating a UIBuilder</p>
      *

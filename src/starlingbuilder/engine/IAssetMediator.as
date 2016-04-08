@@ -10,7 +10,7 @@ package starlingbuilder.engine
     import starling.textures.Texture;
 
     /**
-     *  IAssetMediator defines what the engine needs from the project.
+     *  Interface for getting assets from the project
      *
      *  <p>
      *  You should implement your AssetMediator in your project.
