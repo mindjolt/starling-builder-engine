@@ -7,6 +7,7 @@
  */
 package starlingbuilder.engine
 {
+    import flash.utils.Dictionary;
     import flash.utils.describeType;
 
     /**
@@ -45,6 +46,7 @@ package starlingbuilder.engine
         private var _embeddedCls:Class;
         private var _layoutCls:Class;
         private var _preload:Boolean;
+        private var _layoutMapper:Dictionary;
 
         /**
          * Constructor
@@ -95,6 +97,44 @@ package starlingbuilder.engine
             {
                 name = constant.@name;
                 _layoutCls[name] = JSON.parse(new _embeddedCls[name]());
+            }
+        }
+
+        public function loadByClass(cls:Class):Object
+        {
+            if (_layoutMapper == null)
+                mapLayout();
+
+            var data:* = _layoutMapper[cls];
+
+            if (data == null)
+            {
+                throw new Error("Layout data cannot be null!");
+            }
+            else if (data is String)
+            {
+                var name:String = data as String;
+
+                if (_layoutCls[name] == null)
+                    _layoutCls[name] = JSON.parse(new _embeddedCls[name]);
+
+                _layoutMapper[cls] = _layoutCls[name];
+            }
+
+            return _layoutMapper[cls];
+        }
+
+        private function mapLayout():void
+        {
+            _layoutMapper = new Dictionary();
+
+            var name:String;
+            var description:XML = describeType(_embeddedCls);
+            var constants:XMLList = description..constant;
+            for each(var constant:XML in constants)
+            {
+                name = constant.@name;
+                _layoutMapper[_embeddedCls[name]] = name;
             }
         }
     }
