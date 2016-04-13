@@ -8,12 +8,14 @@
 package starlingbuilder.demo {
     import starling.core.Starling;
     import starling.display.Button;
-    import starling.display.Quad;
+    import starling.display.Image;
     import starling.display.Sprite;
     import starling.display.Stage;
     import starling.events.Touch;
     import starling.events.TouchEvent;
     import starling.events.TouchPhase;
+
+    import starlingbuilder.engine.util.StageUtil;
 
     public class HUD extends Sprite
     {
@@ -30,8 +32,9 @@ package starlingbuilder.demo {
 
             var stage:Stage = Starling.current.stage;
 
-            var quad:Quad = new Quad(stage.stageWidth, stage.stageHeight);
-            addChild(quad);
+            var background:Image = new Image(UIBuilderDemo.assetManager.getTexture("background"));
+            StageUtil.fitBackground(background);
+            addChild(background);
 
             _sprite = UIBuilderDemo.uiBuilder.create(ParsedLayouts.hud, false, this) as Sprite;
             addChild(_sprite);

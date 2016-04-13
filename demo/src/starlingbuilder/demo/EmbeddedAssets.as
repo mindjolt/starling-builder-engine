@@ -16,6 +16,8 @@ package starlingbuilder.demo
         [Embed(source="../../../assets/textures/ui.xml", mimeType="application/octet-stream")]
         public static const ui_xml:Class;
 
+        [Embed(source="../../../assets/textures/background.jpg")]
+        public static const background:Class;
 
         //fonts
         [Embed(source="../../../assets/textures/fonts/GrilledCheeseBTN_Size18_ColorFFFFFF_StrokeA8364B.png")]

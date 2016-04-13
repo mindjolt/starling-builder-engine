@@ -31,15 +31,15 @@ package starlingbuilder.demo {
     {
         public static const linkers:Array = [AnchorLayout, FlowLayout, HorizontalLayout, VerticalLayout, TiledRowsLayout, BlurFilter];
 
-        private var _assetManager:AssetManager;
         private var _assetMediator:starlingbuilder.demo.AssetMediator;
 
         public static var uiBuilder:IUIBuilder;
+        public static var assetManager:AssetManager;
 
         public function UIBuilderDemo()
         {
-            _assetManager = new AssetManager();
-            _assetMediator = new starlingbuilder.demo.AssetMediator(_assetManager);
+            assetManager = new AssetManager();
+            _assetMediator = new starlingbuilder.demo.AssetMediator(assetManager);
 
             var localization:ILocalization = new DefaultLocalization(JSON.parse(new EmbeddedAssets.strings), "en_US");
             uiBuilder = new UIBuilder(_assetMediator, false, null, localization, new DefaultTweenBuilder());
@@ -49,9 +49,9 @@ package starlingbuilder.demo {
 
             var loader:LayoutLoader = new LayoutLoader(starlingbuilder.demo.EmbeddedLayouts, ParsedLayouts);
 
-            _assetManager.enqueue(EmbeddedAssets);
-            //_assetManager.enqueue(File.applicationDirectory.resolvePath("textures"));
-            _assetManager.loadQueue(function(ratio:Number):void{
+            assetManager.enqueue(EmbeddedAssets);
+            //assetManager.enqueue(File.applicationDirectory.resolvePath("textures"));
+            assetManager.loadQueue(function(ratio:Number):void{
                 if (ratio == 1)
                 {
                     createButtons();
