@@ -101,19 +101,9 @@ package starlingbuilder.engine.tween
                 return;
             }
 
-            if (!data.hasOwnProperty("properties"))
-            {
-                trace("Missing tween param: properties");
-                return;
-            }
+            var initData:Object = saveInitData(obj, data.properties, data.delta, data.from, data.fromDelta);
 
-            var initData:Object = saveInitData(obj, data.properties, data.delta);
-
-            setFrom(obj, data.from);
-
-            var properties:Object = UIBuilder.cloneObject(data.properties);
-
-            setDelta(obj, data.delta, properties);
+            var properties:Object = createProperties(obj, data, initData);
 
             var tween:Object = Starling.current.juggler.tween(obj, data.time, properties);
 
@@ -169,23 +159,57 @@ package starlingbuilder.engine.tween
             delete _saveData[obj];
         }
 
-        private function setFrom(obj:Object, from:Object):void
+        private function createProperties(obj:Object, data:Object, initData:Object):Object
         {
-            for (var name:String in from)
-            {
-                if (obj.hasOwnProperty(name))
-                {
-                    obj[name] = from[name];
-                }
-            }
-        }
+            var fromData:Object = {};
+            var name:String;
 
-        private function setDelta(obj:Object, delta:Object, properties:Object):void
-        {
-            for (var id:String in delta)
+            //set from
+            if (data.hasOwnProperty("from"))
             {
-                properties[id] = obj[id] + delta[id];
+                var from:Object = data.from;
+                for (name in from)
+                    if (obj.hasOwnProperty(name))
+                    {
+                        obj[name] = from[name];
+                        fromData[name] = initData[name];
+                    }
             }
+
+            //set fromDelta
+            if (data.hasOwnProperty("fromDelta"))
+            {
+                var fromDelta:Object = data.fromDelta;
+                for (name in fromDelta)
+                    if (obj.hasOwnProperty(name))
+                    {
+                        obj[name] += fromDelta[name];
+                        fromData[name] = initData[name];
+                    }
+            }
+
+            //clone properties
+            var properties:Object;
+            if (data.hasOwnProperty("properties"))
+                properties = UIBuilder.cloneObject(data.properties);
+            else
+                properties = {};
+
+            //set delta
+            if (data.hasOwnProperty("delta"))
+            {
+                var delta:Object = data.delta;
+                for (name in delta)
+                    if (obj.hasOwnProperty(name))
+                        properties[name] = obj[name] + delta[name];
+            }
+
+            //set init data for from and fromDelta (if not exist)
+            for (name in fromData)
+                if (!properties.hasOwnProperty(name))
+                    properties[name] = fromData[name];
+
+            return properties;
         }
 
         private function recoverInitData(obj:Object, initData:Object):void
@@ -196,7 +220,7 @@ package starlingbuilder.engine.tween
             }
         }
 
-        private function saveInitData(obj:Object, properties:Object, delta:Object):Object
+        private function saveInitData(obj:Object, properties:Object, delta:Object, from:Object, fromDelta:Object):Object
         {
             var data:Object = {};
             var name:String;
@@ -210,6 +234,22 @@ package starlingbuilder.engine.tween
             }
 
             for (name in delta)
+            {
+                if (obj.hasOwnProperty(name))
+                {
+                    data[name] = obj[name];
+                }
+            }
+
+            for (name in from)
+            {
+                if (obj.hasOwnProperty(name))
+                {
+                    data[name] = obj[name];
+                }
+            }
+
+            for (name in fromDelta)
             {
                 if (obj.hasOwnProperty(name))
                 {
