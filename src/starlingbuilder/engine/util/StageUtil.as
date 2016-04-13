@@ -11,6 +11,12 @@ package starlingbuilder.engine.util
     import flash.geom.Point;
     import flash.system.Capabilities;
 
+    import starling.core.Starling;
+
+    import starling.display.DisplayObject;
+    import starling.utils.RectangleUtil;
+    import starling.utils.ScaleMode;
+
     /**
      * Helper class to support multiple resolution
      *
@@ -149,6 +155,38 @@ package starlingbuilder.engine.util
         public static function isiOS():Boolean
         {
             return Capabilities.manufacturer.indexOf("iOS") != -1;
+        }
+
+        /**
+         * Fit background to the center of the native stage, If the aspect ratio is different, some cropping may happen.
+         * @param object background display object
+         * @param stage native stage
+         */
+        public static function fitNativeBackground(object:flash.display.DisplayObject, stage:Stage):void
+        {
+            var objectRect:flash.geom.Rectangle = new flash.geom.Rectangle(0, 0, object.width, object.height);
+            var stageRect:flash.geom.Rectangle = new flash.geom.Rectangle(0, 0, stage.stageWidth, stage.stageHeight);
+            var rect:flash.geom.Rectangle = RectangleUtil.fit(objectRect, stageRect, ScaleMode.NO_BORDER);
+            object.x = rect.x;
+            object.y = rect.y;
+            object.width = rect.width;
+            object.height = rect.height;
+        }
+
+        /**
+         * Fit background to the center of the Starling stage. If the aspect ratio is different, some cropping may happen.
+         * @param object background display object
+         */
+        public static function fitBackground(object:DisplayObject):void
+        {
+            var stage:starling.display.Stage = Starling.current.stage;
+            var objectRect:flash.geom.Rectangle = new flash.geom.Rectangle(0, 0, object.width, object.height);
+            var stageRect:flash.geom.Rectangle = new flash.geom.Rectangle(0, 0, stage.stageWidth, stage.stageHeight);
+            var rect:flash.geom.Rectangle = RectangleUtil.fit(objectRect, stageRect, ScaleMode.NO_BORDER);
+            object.x = rect.x;
+            object.y = rect.y;
+            object.width = rect.width;
+            object.height = rect.height;
         }
     }
 }
