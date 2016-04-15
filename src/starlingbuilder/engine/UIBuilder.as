@@ -69,8 +69,8 @@ package starlingbuilder.engine
      *     }</listing>
      *
      * @see http://wiki.starling-framework.org/builder/start Starling Builder wiki page
-     * @see "Starling Builder demo project"
-     * @see "Starling Builder scaffold project"
+     * @see http://github.com/mindjolt/starling-builder-engine/tree/master/demo Starling Builder demo project
+     * @see http://github.com/mindjolt/starling-builder-engine/tree/master/scaffold Starling Builder scaffold project
      *
      */
     public class UIBuilder implements IUIBuilder

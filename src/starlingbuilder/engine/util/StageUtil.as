@@ -30,7 +30,7 @@ package starlingbuilder.engine.util
      *     starling.stage.stageHeight = size.y;</listing>
      *
      * @see http://wiki.starling-framework.org/builder/multiple_resolution Multiple resolution support
-     * @see "Starling Builder demo project"
+     * @see http://github.com/mindjolt/starling-builder-engine/tree/master/demo Starling Builder demo project
      */
     public class StageUtil
     {

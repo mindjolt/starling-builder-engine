@@ -34,11 +34,15 @@ package starlingbuilder.engine
      *     public static var mail_popup:Object;
      * }
      * <br>
+     * //loader with preload option
      * var loader:LayoutLoader = new LayoutLoader(EmbeddedLayout, ParsedLayout);
+     * var sprite:Sprite = uiBuilder.create(ParsedLayout.connect_popup) as Sprite;
      * <br>
-     * var sprite:Sprite = uiBuilder.create(ParsedLayout.connect_popup) as Sprite;</listing>
+     * //loader without preload option
+     * var loader2:LayoutLoader = new LayoutLoader(EmbeddedLayout, ParsedLayout, false);
+     * var sprite2:Sprite = uiBuilder.create(loader2.loadByClass(EmbeddedLayout.connect_popup));</listing>
      *
-     * @see "Starling Builder demo project"
+     * @see http://github.com/mindjolt/starling-builder-engine/tree/master/demo Starling Builder demo project
      *
      */
     public class LayoutLoader
@@ -52,7 +56,7 @@ package starlingbuilder.engine
          * Constructor
          * @param embeddedCls class with embedded layout
          * @param layoutCls class with parsed layout
-         * @param preload whether to preload it. If set to true, calling load() is not necessary
+         * @param preload whether to preload it. If set to true, calling load() or loadByClass() is not necessary
          */
         public function LayoutLoader(embeddedCls:Class, layoutCls:Class, preload:Boolean = true)
         {
@@ -100,6 +104,11 @@ package starlingbuilder.engine
             }
         }
 
+        /**
+         * Load a layout with the embedded data, only need to use it when preload = false
+         * @param cls embedded data class
+         * @return parsed as3 object
+         */
         public function loadByClass(cls:Class):Object
         {
             if (_layoutMapper == null)
