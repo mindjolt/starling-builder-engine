@@ -228,9 +228,11 @@ package starlingbuilder.engine
 
         public static function sortParams(array:Array, params:Object):void
         {
-            array.sort(function(e1:Object, e2:Object):int
+            array.sort(function(e1:String, e2:String):int
             {
-                return int(params[e1]) - int(params[e2]);
+                var value:int = int(params[e1]) - int(params[e2]);
+                if (value != 0) return value;
+                return e1 < e2 ? -1 : 1;
             });
         }
     }
