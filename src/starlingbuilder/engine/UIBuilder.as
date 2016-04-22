@@ -596,5 +596,27 @@ package starlingbuilder.engine
                 }
             }
         }
+
+        /***
+         * Helper function to find elements by tag
+         * @param tag name of the tag
+         * @param paramsDict params dictionary of meta data
+         * @return array of objects with the tag, if not found then return empty array
+         */
+        public static function findByTag(tag:String, paramsDict:Dictionary):Array
+        {
+            var result:Array = [];
+
+            for (var obj:Object in paramsDict)
+            {
+                var param:Object = paramsDict[obj];
+                if (param && param.customParams && param.customParams.tag == tag)
+                {
+                    result.push(obj);
+                }
+            }
+
+            return result;
+        }
     }
 }
