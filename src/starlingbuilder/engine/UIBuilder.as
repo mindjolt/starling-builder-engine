@@ -158,8 +158,7 @@ package starlingbuilder.engine
                 if (isExternalSource(data))
                 {
                     var externalData:Object = _dataFormatter.read(_assetMediator.getExternalData(data.customParams.source));
-                    var params:Dictionary = new Dictionary();
-                    container.addChild(loadTree(externalData.layout, factory, params));
+                    container.addChild(create(externalData) as DisplayObject);
                     paramsDict[obj] = data;
                 }
             }
