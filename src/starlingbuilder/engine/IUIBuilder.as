@@ -172,6 +172,15 @@ package starlingbuilder.engine
          */
         function set localizationHandler(value:ILocalizationHandler):void
 
+        /**
+         * Display object handler
+         */
+        function get displayObjectHandler():IDisplayObjectHandler;
+
+        /**
+         * @private
+         */
+        function set displayObjectHandler(value:IDisplayObjectHandler):void;
 
         /**
          * @private

@@ -89,6 +89,8 @@ package starlingbuilder.engine
 
         private var _localizationHandler:ILocalizationHandler;
 
+        private var _displayObjectHandler:IDisplayObjectHandler;
+
         private var _tweenBuilder:ITweenBuilder;
 
         /**
@@ -162,6 +164,9 @@ package starlingbuilder.engine
                     paramsDict[obj] = data;
                 }
             }
+
+            if (_displayObjectHandler)
+                _displayObjectHandler.onCreate(obj, paramsDict);
 
             return obj;
         }
@@ -522,6 +527,22 @@ package starlingbuilder.engine
         public function set localizationHandler(value:ILocalizationHandler):void
         {
             _localizationHandler = value;
+        }
+
+        /**
+         * @inheritDoc
+         */
+        public function get displayObjectHandler():IDisplayObjectHandler
+        {
+            return _displayObjectHandler
+        }
+
+        /**
+         * @private
+         */
+        public function set displayObjectHandler(value:IDisplayObjectHandler):void
+        {
+            _displayObjectHandler = value;
         }
 
         /**
