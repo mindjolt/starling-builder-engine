@@ -68,66 +68,81 @@ package starlingbuilder.engine
             var texture:Texture;
             var scaleRatio:Array;
             var cls:Class;
+            var data:Object;
 
-            if (param.cls == ParamUtil.getClassName(Texture))
+            var clsName:String = param.cls;
+
+            switch (clsName)
             {
-                texture = _assetMediator.getTexture(param.textureName);
+                case "starling.textures.Texture":
+                    texture = _assetMediator.getTexture(param.textureName);
 
-                if (texture == null)
-                    throw new Error("Texture " + param.textureName + " not found");
+                    if (texture == null)
+                        throw new Error("Texture " + param.textureName + " not found");
 
-                return texture;
-            }
-            else if (param.cls == "feathers.textures.Scale3Textures")
-            {
-                texture = _assetMediator.getTexture(param.textureName);
+                    return texture;
+                    break;
+                case "feathers.textures.Scale3Textures":
+                    texture = _assetMediator.getTexture(param.textureName);
 
-                if (texture == null)
-                    throw new Error("Texture " + param.textureName + " not found");
+                    if (texture == null)
+                        throw new Error("Texture " + param.textureName + " not found");
 
-                scaleRatio = param.scaleRatio;
+                    scaleRatio = param.scaleRatio;
 
-                var direction:String = "horizontal";
+                    var direction:String = "horizontal";
 
-                if (scaleRatio.length == 3)
-                {
-                    direction = scaleRatio[2];
-                }
+                    if (scaleRatio.length == 3)
+                    {
+                        direction = scaleRatio[2];
+                    }
 
-                var s3t:Object;
-                cls = getDefinitionByName("feathers.textures.Scale3Textures") as Class;
-                if (direction == "horizontal")
-                {
-                    s3t = new cls(texture, texture.width * scaleRatio[0], texture.width * scaleRatio[1], direction);
-                }
-                else
-                {
-                    s3t = new cls(texture, texture.height * scaleRatio[0], texture.height * scaleRatio[1], direction);
-                }
+                    var s3t:Object;
+                    cls = getDefinitionByName("feathers.textures.Scale3Textures") as Class;
+                    if (direction == "horizontal")
+                    {
+                        s3t = new cls(texture, texture.width * scaleRatio[0], texture.width * scaleRatio[1], direction);
+                    }
+                    else
+                    {
+                        s3t = new cls(texture, texture.height * scaleRatio[0], texture.height * scaleRatio[1], direction);
+                    }
 
-                return s3t;
+                    return s3t;
+                    break;
+                case "feathers.textures.Scale9Textures":
+                    texture = _assetMediator.getTexture(param.textureName);
 
-            }
-            else if (param.cls == "feathers.textures.Scale9Textures")
-            {
-                texture = _assetMediator.getTexture(param.textureName);
+                    if (texture == null)
+                        throw new Error("Texture " + param.textureName + " not found");
 
-                if (texture == null)
-                    throw new Error("Texture " + param.textureName + " not found");
+                    scaleRatio = param.scaleRatio;
+                    var rect:Rectangle = new Rectangle(texture.width * scaleRatio[0], texture.height * scaleRatio[1], texture.width * scaleRatio[2], texture.height * scaleRatio[3]);
+                    cls = getDefinitionByName("feathers.textures.Scale9Textures") as Class;
+                    var s9t:Object = new cls(texture, rect);
+                    return s9t;
+                    break;
+                case "__AS3__.vec.Vector.<starling.textures.Texture>":
+                    return _assetMediator.getTextures(param.value);
+                    break;
+                case "XML":
+                    data = _assetMediator.getXml(param.name);
 
-                scaleRatio = param.scaleRatio;
-                var rect:Rectangle = new Rectangle(texture.width * scaleRatio[0], texture.height * scaleRatio[1], texture.width * scaleRatio[2], texture.height * scaleRatio[3]);
-                cls = getDefinitionByName("feathers.textures.Scale9Textures") as Class;
-                var s9t:Object = new cls(texture, rect);
-                return s9t;
-            }
-            else if (param.cls == ParamUtil.getClassName(Vector.<Texture>))
-            {
-                return _assetMediator.getTextures(param.value);
-            }
-            else
-            {
-                return null;
+                    if (data == null)
+                        throw new Error("XML " + param.name + " not found");
+
+                    return data;
+                    break;
+                case "Object":
+                    data = _assetMediator.getObject(param.name);
+
+                    if (data == null)
+                        throw new Error("Object " + param.name + " not found");
+
+                    return data;
+                    break;
+                default:
+                    return null;
             }
         }
 

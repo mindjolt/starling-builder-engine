@@ -16,6 +16,7 @@ package starlingbuilder.engine
     import starlingbuilder.engine.tween.ITweenBuilder;
     import starlingbuilder.engine.util.ObjectLocaterUtil;
     import starlingbuilder.engine.util.ParamUtil;
+    import starlingbuilder.engine.util.ParamUtil;
     import starlingbuilder.engine.util.SaveUtil;
 
     import flash.geom.Rectangle;
@@ -272,6 +273,8 @@ package starlingbuilder.engine
             return item;
         }
 
+        private static const RESOURCE_CLASSES:Array = ["XML", "Object"];
+
         private function saveElement(obj:Object, params:Array, paramsData:Object):Object
         {
             var item:Object = {params:{}, constructorParams:[], customParams:{}};
@@ -292,7 +295,7 @@ package starlingbuilder.engine
                 {
                     if (param.hasOwnProperty("cls"))
                     {
-                        if (obj[param.name] is Texture)   //special case for saving texture
+                        if (obj[param.name] is Texture || RESOURCE_CLASSES.indexOf(ParamUtil.getClassName(obj[param.name])) != -1)   //special case for saving texture
                         {
                             item.params[param.name] = cloneObject(paramsData.params[param.name]);
                         }
