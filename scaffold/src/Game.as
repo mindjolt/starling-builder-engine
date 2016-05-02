@@ -9,20 +9,23 @@ package
 {
     import starling.display.Sprite;
     import starling.utils.AssetManager;
+
+    import starlingbuilder.engine.DefaultAssetMediator;
+    import starlingbuilder.engine.IAssetMediator;
     import starlingbuilder.engine.IUIBuilder;
     import starlingbuilder.engine.UIBuilder;
 
     public class Game extends Sprite
     {
         private var _assetManager:AssetManager;
-        private var _assetMediator:AssetMediator;
+        private var _assetMediator:IAssetMediator;
 
         public static var uiBuilder:IUIBuilder;
 
         public function Game()
         {
             _assetManager = new AssetManager();
-            _assetMediator = new AssetMediator(_assetManager);
+            _assetMediator = new DefaultAssetMediator(_assetManager);
             uiBuilder = new UIBuilder(_assetMediator);
 
             //_assetManager.enqueue(EmbeddedAssets);

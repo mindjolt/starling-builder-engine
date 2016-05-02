@@ -7,31 +7,20 @@
  */
 package starlingbuilder.demo
 {
-    import starling.textures.Texture;
     import starling.utils.AssetManager;
+
+    import starlingbuilder.engine.DefaultAssetMediator;
 
     import starlingbuilder.engine.IAssetMediator;
 
-    public class AssetMediator implements IAssetMediator
+    public class AssetMediator extends DefaultAssetMediator implements IAssetMediator
     {
-        private var _assetManager:AssetManager;
-
-        public function AssetMediator(assetManager:AssetManager)
+        public function AssetMediator(assetManager:AssetManager):void
         {
-            _assetManager = assetManager;
+            super(assetManager);
         }
 
-        public function getTexture(name:String):Texture
-        {
-            return _assetManager.getTexture(name);
-        }
-
-        public function getTextures(prefix:String="", result:Vector.<Texture>=null):Vector.<Texture>
-        {
-            return _assetManager.getTextures(prefix, result);
-        }
-
-        public function getExternalData(name:String):Object
+        override public function getExternalData(name:String):Object
         {
             return ParsedLayouts[name];
         }
