@@ -37,5 +37,8 @@ package starlingbuilder.demo {
 
         [Embed(source="layouts/anchorlayout_test.json", mimeType="application/octet-stream")]
         public static const anchorlayout_test:Class;
+
+        [Embed(source="layouts/containerbutton_test.json", mimeType="application/octet-stream")]
+        public static const containerbutton_test:Class;
     }
 }

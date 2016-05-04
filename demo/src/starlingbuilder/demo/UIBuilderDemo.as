@@ -41,6 +41,7 @@ package starlingbuilder.demo {
         public static const SHOW_MOVIE_CLIP:String = "showMovieClip";
         public static const SHOW_LAYOUT:String = "showLayout";
         public static const SHOW_ANCHOR_LAYOUT:String = "showAnchorLayout";
+        public static const SHOW_CONTAINER_BUTTON:String = "showContainerButton";
 
         public static const linkers:Array = [AnchorLayout, FlowLayout, HorizontalLayout, VerticalLayout, TiledRowsLayout, BlurFilter];
 
@@ -94,7 +95,8 @@ package starlingbuilder.demo {
                 {label:"external element", event:SHOW_EXTERNAL_ELEMENT},
                 {label:"movie clip", event:SHOW_MOVIE_CLIP},
                 {label:"layout", event:SHOW_LAYOUT},
-                {label:"anchor layout", event:SHOW_ANCHOR_LAYOUT}
+                {label:"anchor layout", event:SHOW_ANCHOR_LAYOUT},
+                {label:"container button", event:SHOW_CONTAINER_BUTTON}
             ]
         }
 
@@ -131,6 +133,9 @@ package starlingbuilder.demo {
                     break;
                 case SHOW_ANCHOR_LAYOUT:
                     createAnchorLayoutTest();
+                    break;
+                case SHOW_CONTAINER_BUTTON:
+                    createContainerButtonTest();
                     break;
             }
 
@@ -189,6 +194,12 @@ package starlingbuilder.demo {
         {
             var test:AnchorLayoutTest = new AnchorLayoutTest();
             addChild(test);
+        }
+
+        private function createContainerButtonTest():void
+        {
+            var popup:ContainerButtonPopup = new ContainerButtonPopup();
+            PopUpManager.addPopUp(popup);
         }
     }
 }
