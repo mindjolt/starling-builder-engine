@@ -273,7 +273,7 @@ package starlingbuilder.engine
             return item;
         }
 
-        private static const RESOURCE_CLASSES:Array = ["XML", "Object"];
+        private static const RESOURCE_CLASSES:Array = ["XML", "Object", "feathers.data.ListCollection", "feathers.data.HierarchicalCollection"];
 
         private function saveElement(obj:Object, params:Array, paramsData:Object):Object
         {

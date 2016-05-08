@@ -141,6 +141,10 @@ package starlingbuilder.engine
 
                     return data;
                     break;
+                case "feathers.data.ListCollection":
+                case "feathers.data.HierarchicalCollection":
+                    cls = getDefinitionByName(clsName) as Class;
+                    return new cls(param.data);
                 default:
                     return null;
             }
