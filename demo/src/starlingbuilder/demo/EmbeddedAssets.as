@@ -48,5 +48,13 @@ package starlingbuilder.demo
         //localization strings
         [Embed(source="../../../assets/strings.json", mimeType="application/octet-stream")]
         public static const strings:Class;
+
+
+        //particles
+        [Embed(source="../../../assets/particles/default_particle_png.png")]
+        public static const default_particle_png:Class;
+
+        [Embed(source="../../../assets/particles/default_particle.pex", mimeType="application/octet-stream")]
+        public static const default_particle:Class;
     }
 }

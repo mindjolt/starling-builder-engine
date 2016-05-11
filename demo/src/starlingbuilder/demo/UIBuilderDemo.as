@@ -29,6 +29,7 @@ package starlingbuilder.demo {
     import starlingbuilder.engine.localization.DefaultLocalization;
     import starlingbuilder.engine.localization.ILocalization;
     import starlingbuilder.engine.tween.DefaultTweenBuilder;
+    import starlingbuilder.extensions.particle.FFParticleSprite;
 
     public class UIBuilderDemo extends Sprite
     {
@@ -42,8 +43,9 @@ package starlingbuilder.demo {
         public static const SHOW_LAYOUT:String = "showLayout";
         public static const SHOW_ANCHOR_LAYOUT:String = "showAnchorLayout";
         public static const SHOW_CONTAINER_BUTTON:String = "showContainerButton";
+        public static const SHOW_PARTICLE_BUTTON:String = "showParticleButton";
 
-        public static const linkers:Array = [AnchorLayout, FlowLayout, HorizontalLayout, VerticalLayout, TiledRowsLayout, BlurFilter];
+        public static const linkers:Array = [AnchorLayout, FlowLayout, HorizontalLayout, VerticalLayout, TiledRowsLayout, BlurFilter, FFParticleSprite];
 
         private var _assetMediator:starlingbuilder.demo.AssetMediator;
 
@@ -96,7 +98,8 @@ package starlingbuilder.demo {
                 {label:"movie clip", event:SHOW_MOVIE_CLIP},
                 {label:"layout", event:SHOW_LAYOUT},
                 {label:"anchor layout", event:SHOW_ANCHOR_LAYOUT},
-                {label:"container button", event:SHOW_CONTAINER_BUTTON}
+                {label:"container button", event:SHOW_CONTAINER_BUTTON},
+                {label:"particle", event:SHOW_PARTICLE_BUTTON}
             ]
         }
 
@@ -136,6 +139,9 @@ package starlingbuilder.demo {
                     break;
                 case SHOW_CONTAINER_BUTTON:
                     createContainerButtonTest();
+                    break;
+                case SHOW_PARTICLE_BUTTON:
+                    createParticleTest();
                     break;
             }
 
@@ -200,6 +206,12 @@ package starlingbuilder.demo {
         {
             var popup:ContainerButtonPopup = new ContainerButtonPopup();
             PopUpManager.addPopUp(popup);
+        }
+
+        private function createParticleTest():void
+        {
+            var test:ParticleTest = new ParticleTest();
+            addChild(test);
         }
     }
 }
