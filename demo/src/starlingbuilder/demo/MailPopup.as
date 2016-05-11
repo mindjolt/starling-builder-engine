@@ -30,9 +30,9 @@ package starlingbuilder.demo {
 
             var listCollection:ListCollection = new ListCollection();
 
-            for (var i:int = 0; i < 50; ++i)
+            for (var i:int = 1; i <= 50; ++i)
             {
-                listCollection.push(i);
+                listCollection.push({label: ("You received a gift " + i)});
             }
 
             _list.itemRendererFactory = function():IListItemRenderer

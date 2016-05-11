@@ -9,9 +9,12 @@ package starlingbuilder.demo {
     import feathers.controls.renderers.LayoutGroupListItemRenderer;
 
     import starling.display.Sprite;
+    import starling.text.TextField;
 
     public class MailItemRenderer extends LayoutGroupListItemRenderer
     {
+        public var _text:TextField;
+
         private var _sprite:Sprite;
 
         public function MailItemRenderer()
@@ -23,9 +26,17 @@ package starlingbuilder.demo {
         {
             if (_sprite == null)
             {
-                _sprite = UIBuilderDemo.uiBuilder.create(ParsedLayouts.mail_item) as Sprite;
+                _sprite = UIBuilderDemo.uiBuilder.create(ParsedLayouts.mail_item, true, this) as Sprite;
                 addChild(_sprite);
             }
+        }
+
+        override public function set data(value:Object):void
+        {
+            super.data = value;
+
+            if (_data)
+                _text.text = _data.label;
         }
     }
 }

@@ -10,6 +10,7 @@ package starlingbuilder.demo
     import flash.utils.Dictionary;
 
     import starling.display.DisplayObject;
+    import starling.text.BitmapFont;
     import starling.text.TextField;
 
     import starlingbuilder.engine.localization.DefaultLocalizationHandler;
@@ -37,8 +38,10 @@ package starlingbuilder.demo
             var textField:TextField = object as TextField;
             if (textField)
             {
-                if (locale == "cn_ZH")
+                if (locale == "cn_ZH" && textField.fontName == BitmapFont.MINI)
                     textField.fontName = "_sans";
+                else if (textField.fontName == "_sans")
+                    textField.fontName = BitmapFont.MINI;
             }
 
             super.localize(object, text, paramsDict, locale);
