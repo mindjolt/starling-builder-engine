@@ -71,6 +71,7 @@ package starlingbuilder.demo {
                 if (ratio == 1)
                 {
                     createButtons();
+                    complete();
                 }
             });
         }
@@ -79,7 +80,7 @@ package starlingbuilder.demo {
         {
             var list:List = new List();
             list.dataProvider = new ListCollection(createButtonData());
-            list.addEventListener(Event.TRIGGERED, onListTrigger);
+            list.addEventListener(Event.CHANGE, onListTrigger);
             list.width = Starling.current.stage.stageWidth;
             list.height = Starling.current.stage.stageHeight;
 
@@ -106,6 +107,8 @@ package starlingbuilder.demo {
         private function onListTrigger(event:Event):void
         {
             var list:List = event.target as List;
+
+            if (!list.selectedItem) return;
             var type:String = list.selectedItem.event;
 
             switch (type)
@@ -212,6 +215,10 @@ package starlingbuilder.demo {
         {
             var test:ParticleTest = new ParticleTest();
             addChild(test);
+        }
+
+        protected function complete():void
+        {
         }
     }
 }
