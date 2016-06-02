@@ -43,5 +43,8 @@ package starlingbuilder.demo {
 
         [Embed(source="layouts/particle_test.json", mimeType="application/octet-stream")]
         public static const particle_test:Class;
+
+        [Embed(source="layouts/pixelmask_test.json", mimeType="application/octet-stream")]
+        public static const pixelmask_test:Class;
     }
 }

@@ -20,6 +20,7 @@ package starlingbuilder.demo {
 
     import starling.display.Sprite;
     import starling.events.Event;
+    import starling.extensions.pixelmask.PixelMaskDisplayObject;
     import starling.filters.BlurFilter;
     import starling.utils.AssetManager;
 
@@ -44,8 +45,9 @@ package starlingbuilder.demo {
         public static const SHOW_ANCHOR_LAYOUT:String = "showAnchorLayout";
         public static const SHOW_CONTAINER_BUTTON:String = "showContainerButton";
         public static const SHOW_PARTICLE_BUTTON:String = "showParticleButton";
+        public static const SHOW_PIXEL_MASK:String = "showPixelMask";
 
-        public static const linkers:Array = [AnchorLayout, FlowLayout, HorizontalLayout, VerticalLayout, TiledRowsLayout, BlurFilter, FFParticleSprite];
+        public static const linkers:Array = [AnchorLayout, FlowLayout, HorizontalLayout, VerticalLayout, TiledRowsLayout, BlurFilter, FFParticleSprite, PixelMaskDisplayObject];
 
         private var _assetMediator:starlingbuilder.demo.AssetMediator;
 
@@ -100,7 +102,8 @@ package starlingbuilder.demo {
                 {label:"layout", event:SHOW_LAYOUT},
                 {label:"anchor layout", event:SHOW_ANCHOR_LAYOUT},
                 {label:"container button", event:SHOW_CONTAINER_BUTTON},
-                {label:"particle", event:SHOW_PARTICLE_BUTTON}
+                {label:"particle", event:SHOW_PARTICLE_BUTTON},
+                {label:"pixel mask", event:SHOW_PIXEL_MASK}
             ]
         }
 
@@ -145,6 +148,9 @@ package starlingbuilder.demo {
                     break;
                 case SHOW_PARTICLE_BUTTON:
                     createParticleTest();
+                    break;
+                case SHOW_PIXEL_MASK:
+                    createPixelMaskTest();
                     break;
             }
 
@@ -215,6 +221,12 @@ package starlingbuilder.demo {
         {
             var test:ParticleTest = new ParticleTest();
             addChild(test);
+        }
+
+        private function createPixelMaskTest():void
+        {
+            var popup:PixelMaskTest = new PixelMaskTest();
+            PopUpManager.addPopUp(popup);
         }
 
         protected function complete():void
