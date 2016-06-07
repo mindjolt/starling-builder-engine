@@ -3,7 +3,10 @@
  */
 package starlingbuilder.demo
 {
+    import starling.core.Starling;
+    import starling.display.Quad;
     import starling.display.Sprite;
+    import starling.display.Stage;
     import starling.events.Touch;
     import starling.events.TouchEvent;
     import starling.events.TouchPhase;
@@ -13,6 +16,11 @@ package starlingbuilder.demo
         public function ParticleTest()
         {
             super();
+
+            var stage:Stage = Starling.current.stage;
+            var quad:Quad = new Quad(stage.stageWidth, stage.stageHeight, 0x0);
+            addChild(quad);
+
             addChild(UIBuilderDemo.uiBuilder.create(ParsedLayouts.particle_test, false) as Sprite);
             addEventListener(TouchEvent.TOUCH, onTouch);
         }

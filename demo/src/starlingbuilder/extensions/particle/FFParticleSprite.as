@@ -6,11 +6,23 @@ package starlingbuilder.extensions.particle
     import de.flintfabrik.starling.display.FFParticleSystem;
     import de.flintfabrik.starling.display.FFParticleSystem.SystemOptions;
 
+    import flash.geom.Matrix;
+    import flash.geom.Point;
+
+    import flash.geom.Rectangle;
+
+    import starling.display.DisplayObject;
+
     import starling.display.Sprite;
     import starling.textures.Texture;
+    import starling.utils.MatrixUtil;
 
     public class FFParticleSprite extends Sprite
     {
+        // helper objects
+        private static var sHelperMatrix:Matrix = new Matrix();
+        private static var sHelperPoint:Point = new Point();
+
         private static var _optionCache:Object = {};
 
         private var _particleId:String;
@@ -71,6 +83,7 @@ package starlingbuilder.extensions.particle
                 return;
 
             _sprite = new FFParticleSystem(getSystemOptions());
+            _sprite.touchable = false;
             _sprite.start();
             addChild(_sprite);
         }
@@ -103,6 +116,17 @@ package starlingbuilder.extensions.particle
         public function set cacheParticle(value:Boolean):void
         {
             _cacheParticle = value;
+        }
+
+        override public function getBounds(targetSpace:DisplayObject, out:Rectangle=null):Rectangle
+        {
+            if (out == null) out = new Rectangle();
+
+            getTransformationMatrix(targetSpace, sHelperMatrix);
+            MatrixUtil.transformCoords(sHelperMatrix, 0.0, 0.0, sHelperPoint);
+            out.setTo(sHelperPoint.x, sHelperPoint.y, 0, 0);
+
+            return out;
         }
     }
 }
