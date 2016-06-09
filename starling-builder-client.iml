@@ -57,6 +57,29 @@
           </files-to-package>
         </packaging-ios>
       </configuration>
+      <configuration name="demo2.x" target-platform="Mobile" pure-as="true" main-class="starlingbuilder.demo2.Main" output-file="demo2_x.swf" output-folder="$MODULE_DIR$/out/production/starling-builder-client">
+        <dependencies>
+          <entries>
+            <entry library-id="a13ca17c-3c5c-46fd-aa4c-57c8a09fe913">
+              <dependency linkage="Merged" />
+            </entry>
+          </entries>
+          <sdk name="AIRSDK" />
+        </dependencies>
+        <compiler-options />
+        <packaging-air-desktop />
+        <packaging-android enabled="true" use-generated-descriptor="false" custom-descriptor-path="$MODULE_DIR$/demo/src/starlingbuilder/demo/Main-app.xml" package-file-name="demo2_x">
+          <files-to-package>
+            <FilePathAndPathInPackage file-path="$MODULE_DIR$/demo/assets/textures" path-in-package="textures" />
+          </files-to-package>
+        </packaging-android>
+        <packaging-ios enabled="true" use-generated-descriptor="false" custom-descriptor-path="$MODULE_DIR$/demo/src/starlingbuilder/demo/Main-app.xml" package-file-name="demo2_x">
+          <files-to-package>
+            <FilePathAndPathInPackage file-path="$MODULE_DIR$/demo/assets/textures" path-in-package="textures" />
+            <FilePathAndPathInPackage file-path="$MODULE_DIR$/demo/system" path-in-package="." />
+          </files-to-package>
+        </packaging-ios>
+      </configuration>
     </configurations>
     <compiler-options />
   </component>
@@ -64,9 +87,9 @@
     <exclude-output />
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/demo/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/demo/assets" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/scaffold/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/demo/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/demo-2.x/src" isTestSource="false" />
     </content>
     <orderEntry type="jdk" jdkName="AIRSDK" jdkType="Flex SDK Type (new)" />
     <orderEntry type="sourceFolder" forTests="false" />
@@ -101,6 +124,17 @@
         <JAVADOC />
         <SOURCES />
         <jarDirectory url="file://$MODULE_DIR$/scaffold/libs" recursive="false" />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library type="flex">
+        <properties id="a13ca17c-3c5c-46fd-aa4c-57c8a09fe913" />
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/demo-2.x/libs" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+        <jarDirectory url="file://$MODULE_DIR$/demo-2.x/libs" recursive="false" />
       </library>
     </orderEntry>
   </component>
