@@ -360,6 +360,12 @@ package starlingbuilder.engine
                 return false;
             }
 
+            if (param.default_value && "cls" in param.default_value &&
+                    ParamUtil.getClassName(obj[param.name]) == param.default_value.cls)
+            {
+                return false;
+            }
+
             //Custom save rules go to here
             if (!SaveUtil.willSave(obj, param, item))
             {
