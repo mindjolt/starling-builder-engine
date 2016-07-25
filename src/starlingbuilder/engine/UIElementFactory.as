@@ -145,6 +145,8 @@ package starlingbuilder.engine
                 case "feathers.data.HierarchicalCollection":
                     cls = getDefinitionByName(clsName) as Class;
                     return new cls(param.data);
+                case "starlingbuilder.engine.IAssetMediator":
+                    return _assetMediator;
                 default:
                     return null;
             }

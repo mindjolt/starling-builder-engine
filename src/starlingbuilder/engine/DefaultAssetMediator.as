@@ -63,5 +63,13 @@ package starlingbuilder.engine
         {
             return _assetManager.getObject(name);
         }
+
+        /**
+         * @inheritDoc
+         */
+        public function getCustomData(type:String, name:String):Object
+        {
+            return null;
+        }
     }
 }

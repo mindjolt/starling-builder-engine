@@ -90,5 +90,13 @@ package starlingbuilder.engine
          * @return
          */
         function getObject(name:String):Object;
+
+        /**
+         * This method is used to get custom data, it opens up possibility to support 3rd party libraries that require other dependencies
+         * @param type
+         * @param name
+         * @return
+         */
+        function getCustomData(type:String, name:String):Object;
     }
 }
