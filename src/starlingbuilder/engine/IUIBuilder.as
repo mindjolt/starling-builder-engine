@@ -99,11 +99,11 @@ package starlingbuilder.engine
          *
          * Copy a display object to layout data
          *
-         * @param obj display object copy from
+         * @param obj display object or array of display objects copy from
          * @param paramsDict params dictionary of meta data
          * @return
          */
-        function copy(obj:DisplayObject, paramsDict:Object):String
+        function copy(obj:Object, paramsDict:Object):String
 
 
         /**

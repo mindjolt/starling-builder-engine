@@ -213,14 +213,31 @@ package starlingbuilder.engine
         /**
          * @private
          */
-        public function copy(obj:DisplayObject, paramsDict:Object):String
+        public function copy(obj:Object, paramsDict:Object):String
         {
             if (!_template)
             {
                 throw new Error("template not found!");
             }
 
-            return StableJSONEncoder.stringify(saveTree(obj, paramsDict));
+            var data:Object;
+
+            if (obj is DisplayObject)
+            {
+                data = saveTree(obj as DisplayObject, paramsDict);
+            }
+            else if (obj is Array)
+            {
+                data = [];
+                for each (var subObj in obj)
+                    data.push(saveTree(subObj, paramsDict));
+            }
+            else
+            {
+                throw new Error("unrecognized format!");
+            }
+
+            return StableJSONEncoder.stringify(data);
         }
 
         /**
@@ -228,7 +245,7 @@ package starlingbuilder.engine
          */
         public function paste(string:String):Object
         {
-            return {layout:JSON.parse(string)};
+            return JSON.parse(string);
         }
 
         /**
