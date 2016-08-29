@@ -229,7 +229,7 @@ package starlingbuilder.engine
             else if (obj is Array)
             {
                 data = [];
-                for each (var subObj in obj)
+                for each (var subObj:DisplayObject in obj)
                     data.push(saveTree(subObj, paramsDict));
             }
             else
