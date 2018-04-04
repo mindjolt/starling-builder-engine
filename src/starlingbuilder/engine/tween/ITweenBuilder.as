@@ -44,8 +44,9 @@ package starlingbuilder.engine.tween
          * @param root of the DisplayObjects need to tween
          * @param paramsDict A dictionary of the mapping of every UIElement to its layout data
          * @param names array of names (e.g. ["container.button1", "container.button2") to be start tween, if null then start all the available tween
+         * @param trigger string used to run some of the tweens on an object, if null then start all available
          */
-        function start(root:DisplayObject, paramsDict:Dictionary, names:Array = null):void;
+        function start(root:DisplayObject, paramsDict:Dictionary, names:Array = null, trigger:String = null):void;
 
         /**
          * Stop tween according tweenData in layout

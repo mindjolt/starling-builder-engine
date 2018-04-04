@@ -43,7 +43,7 @@ package starlingbuilder.engine.tween
         /**
          * @inheritDoc
          */
-        public function start(root:DisplayObject, paramsDict:Dictionary, names:Array = null):void
+        public function start(root:DisplayObject, paramsDict:Dictionary, names:Array = null, trigger:String = null):void
         {
             stop(root, paramsDict, names);
 
@@ -60,11 +60,15 @@ package starlingbuilder.engine.tween
                     if (tweenData is Array)
                     {
                         for each (var item:Object in tweenData)
-                            createTweenFrom(obj, item);
+                        {
+                            if (!trigger || item.triggerName == trigger)
+                                createTweenFrom(obj, item);
+                        }
                     }
                     else
                     {
-                        createTweenFrom(obj, tweenData);
+                        if (!trigger || tweenData.triggerName == trigger)
+                            createTweenFrom(obj, tweenData);
                     }
                 }
             }
